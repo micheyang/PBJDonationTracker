@@ -17,7 +17,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="textPassword|textVisiblePassword|numberPassword"
+        android:inputType="textPassword|textVisiblePassword"
         android:text="@string/password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,4 +111,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.856"
         android:onClick="onCancelPressed" />
+
+    <TextView
+        android:id="@+id/invalidNotification"
+        android:layout_width="276dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="Invalid username/password"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textColor="#e00d0d"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constrainedHeight="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterLoginPassword" />
 </android.support.constraint.ConstraintLayout>
