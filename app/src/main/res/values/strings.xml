@@ -11,4 +11,16 @@
     <string name="cancel">Cancel</string>
     <string name="passwordLabel">Password</string>
     <string name="logout">Log Out</string>
+    <string name="title_activity_registration">RegistrationActivity</string>
+    <string name="fullName">Jane Smith</string>
+    <string name="enterName">Enter name</string>
+    <string name="email">email@example.com</string>
+    <string name="enterEmail">Enter email</string>
+    <string name="createPassword">Create password</string>
+    <string name="selectAcctType">Select account type</string>
+    <string-array name="acctTypes">
+        <item>General User</item>
+        <item>Location Employee</item>
+        <item>Administrator</item>
+    </string-array>
 </resources>
