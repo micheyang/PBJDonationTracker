@@ -28,6 +28,14 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
+    public void onRegButtonPressed(View view) {
+        Log.d("Edit", "Registered");
+        // Check if new user should be accepted/added to system here
+
+        Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
+        startActivity(intent); //go login
+
+    }
     /**
      * The method called when the user cancels/backs out of registering w/ "Cancel"
      *
