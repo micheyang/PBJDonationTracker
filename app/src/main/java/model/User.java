@@ -37,6 +37,11 @@ public class User {
     public boolean getLocked() { return locked; }
     public void setLock(boolean _locked) { locked = _locked; }
 
-
+    @Override
+    public String toString() {
+        String state = (locked) ? "LOCKED" : "UNLOCKED";
+        return "User: " + username + ", Email: " + email + ", "
+                + "Account state: " + state;
+    }
 
 }

@@ -49,6 +49,23 @@ public class UserDatabase {
     }
 
     /**
+     * Gets a user from the database.
+     *
+     * @param username the username of the user to fetch
+     * @return the User object from our database
+     * @throws IllegalArgumentException if username is null/user doesn't exist
+     */
+    public User getUser(String username) {
+        if (username == null) {
+            throw new IllegalArgumentException("Cannot use null argument.");
+        } else if (users.containsKey(username) {
+            throw new IllegalArgumentException("User not found in system.");
+        } else {
+            return users.get(username);
+        }
+    }
+
+    /**
      * Checks if a user w/ inputted username exists in our database.
      *
      * @param username the username to search the database for
@@ -62,7 +79,8 @@ public class UserDatabase {
      * Checks if the password input matches the password of the User input
      * @param password the password that may/may not match
      * @param user the user with password to compare input with
-     * @return true if values of passwords match, false if no
+     * @return true if values of passwords match, false if they don't match
+     * @throws IllegalArgumentException if null inputs/user doesn't exist
      */
     public boolean matchPassword(String password, User user) {
         if (user == null || password == null) {
@@ -76,7 +94,32 @@ public class UserDatabase {
         }
     }
 
-    public boolean updateUser(User newUser) {
+    /**
+     * Updates the user entry in database. If their username doesn't change, we
+     * just replace its value with updatedUser. If username changes, we remove
+     * the entry entirely because a new key is needed. Then, we print the
+     * changes made to the user into the System.
+     *
+     * @param username the username of the user to be updated
+     * @param updatedUser contains new data for user to be updated with
+     * @throws IllegalArgumentException if null inputs/user doesn't exist
+     */
+    public void updateUser(String username, User updatedUser) {
+        if (username == null || updatedUser == null) {
+            throw new IllegalArgumentException("Cannot have null arguments.");
+        } else if (!users.containsKey(username)) {
+            throw new IllegalArgumentException("User does not exist.");
+        }
+        User oldUser;
+        //if different username than before, remove key&value.
+        if (!username.equals(updatedUser.getUsername())) {
+            oldUser = users.remove(username);
+            users.put(updatedUser.getUsername(), updatedUser);
+        } else {
+            oldUser = users.put(username, updatedUser);
+        }
+        System.out.println("Updated information:\n" + oldUser.toString() + "\n"
+                + updatedUser.toString());
 
     }
 
