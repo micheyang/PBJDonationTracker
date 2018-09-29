@@ -13,7 +13,7 @@ public class User {
      *
      * @param username the username of this user's account
      * @param password the password of this user's account
-     * @param email the user's email to be used for contact
+     * @param email    the user's email to be used for contact
      */
     public User(String username, String password, String email) {
         this.username = username;
@@ -22,22 +22,20 @@ public class User {
         this.locked = false;
     }
 
-    /** *********************
-     * Getters and setters for account information.
+    /**
+     * Getters/setters for this User's attributes
      */
     public String getUsername() { return username; }
-    public void setUsername(String newUsername) { username = newUsername; }
+    public void setUsername(String _username) { username = _username; }
 
     public String getPassword() { return password; }
-    public void setPassword(String newPassword) { password = newPassword; }
-
-    public boolean getLocked() { return locked; }
-    public void setLocked(boolean newState) { locked = newState; }
+    public void setPassword(String _password) { password = _password; }
 
     public String getEmail() { return email; }
-    public void setEmail(String newEmail) { email = newEmail; }
+    public void setEmail(String _email) { email = _email; }
 
-
+    public boolean getLocked() { return locked; }
+    public void setLock(boolean _locked) { locked = _locked; }
 
 
 
