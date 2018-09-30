@@ -44,22 +44,30 @@ public class RegistrationActivity extends AppCompatActivity {
      */
     public void onRegButtonPressed(View view) {
         Log.d("Edit", "Registered");
+
+        /**
         // Check if new user should be accepted/added to system here
-          //if username is unique and password is non-null, add to system
         String usernameStr = username.getText().toString();
         String passwordStr = password.getText().toString();
         String emailStr = email.getText().toString();
 
-        /**if (!(usersSystem.containsUser(usernameStr))) {
+        //if username is unique and password is non-null, add to system
+        if (!(usersSystem.containsUser(usernameStr))) {
             //make a new user
-            //User newUser = new User(usernameStr, passwordStr, emailStr);
+            User newUser = new User(usernameStr, passwordStr, emailStr);
             //add them to the usersSystem
-            //usersSystem.addUser(newUser);**/
+            usersSystem.addUser(newUser);
+
+            //pass user's registered username and password into the intent**/
+
+            //so that when he/she attempts to log in, the system can verify match
             Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
+            /**intent.putExtra("user_username", usernameStr);
+            intent.putExtra("user_password", passwordStr);**/
             startActivity(intent); //go login
 
         /**} else {
-            //invalid_username.setVisibility(View.VISIBLE); //show bad attempt notification
+            invalid_username.setVisibility(View.VISIBLE); //show bad attempt notification
         }**/
     }
     /**

@@ -79,15 +79,27 @@ public class LoginActivity extends AppCompatActivity {
     public boolean validate(String user, String pass) {
 
         /**
-        //if user's inputted username exists in user database
-        if (RegistrationActivity.usersSystem.containsUser(user)) {
-            User userInSystem = RegistrationActivity.usersSystem.getUser(user);
-            //if user's inputted password matches the username associated with it
-            if (RegistrationActivity.usersSystem.matchPassword(pass, userInSystem)) {
-                return (true);
-            }
+        //retrieve username and password user entered from RegistrationActivity.java
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String usernameStr = extras.getString("user_username");
+            String passwordStr = extras.getString("user_password");
+            //validate if username and password match
+            return (user.equals(usernameStr) && pass.equals(passwordStr));
         }
         return (false);
+         **/
+
+        /**
+         //if user's inputted username exists in user database
+         if (RegistrationActivity.usersSystem.containsUser(user)) {
+         User userInSystem = RegistrationActivity.usersSystem.getUser(user);
+         //if user's inputted password matches the username associated with it
+         if (RegistrationActivity.usersSystem.matchPassword(pass, userInSystem)) {
+         return (true);
+         }
+         }
+         return (false);
          **/
 
         return user.equals("user") && (pass.equals("pass"));
