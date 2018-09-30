@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import model.User;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText username; // variable to store username input
@@ -67,14 +69,27 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * This function checks the inputted username and password by the user on
-     * the login screen. For M4, this is just checking equality with a test
-     * case "user" for username/"pass" for password. This will change later on.
+     * the login screen. For M5, this requires checking if the user's username
+     * matches his/her stated password in the user database system.
      *
      * @param user the inputted username by the user
      * @param pass the inputted password by the user
      * @return true if matches the hardcoded 'test' user/pass, false otherwise
      */
     public boolean validate(String user, String pass) {
+
+        /**
+        //if user's inputted username exists in user database
+        if (RegistrationActivity.usersSystem.containsUser(user)) {
+            User userInSystem = RegistrationActivity.usersSystem.getUser(user);
+            //if user's inputted password matches the username associated with it
+            if (RegistrationActivity.usersSystem.matchPassword(pass, userInSystem)) {
+                return (true);
+            }
+        }
+        return (false);
+         **/
+
         return user.equals("user") && (pass.equals("pass"));
     }
 
