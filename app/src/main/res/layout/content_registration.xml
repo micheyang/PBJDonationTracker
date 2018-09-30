@@ -180,12 +180,17 @@
         app:layout_constraintVertical_bias="0.644" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/badUsernameNotification"
         android:layout_width="215dp"
         android:layout_height="23dp"
         android:text="Username already exists."
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
         android:textColor="#e00d0d"
+        android:textStyle="bold"
         android:visibility="invisible"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="93dp" />
+        app:layout_constrainedHeight="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/regNameEntry" />
+        //tools:layout_editor_absoluteX="32dp"
+        //tools:layout_editor_absoluteY="93dp" />
 </android.support.constraint.ConstraintLayout>
