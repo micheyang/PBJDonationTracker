@@ -29,25 +29,30 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-        login();
-        cancel();
+
+        login(); //handles actions for user wanting to login
+        cancel(); //handles actions for user cancelling login
     }
 
+    /**
+     * Checks the user's login/password inputs (w/ database lists) if a login attempt is made.
+     * If the user enters existing username & matching password, the user is directed into app.
+     * Otherwise, the user is notified of invalid/failed login attempt on login screen.
+     */
     public void login() {
         Log.d("Edit", "attempt login");
         username = (EditText) findViewById(R.id.enterLoginUsername);
         password = (EditText) findViewById(R.id.enterLoginPassword);
         invalid_login = (TextView) findViewById(R.id.invalidNotification);
 
+        //a login button click will check user's inputs for validity
         loginButton = (Button) findViewById(R.id.buttonLogin);
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 currentUserDatabase();
                 if (!validate(username.getText().toString(), password.getText().toString())) {
-                    invalid_login.setVisibility(View.VISIBLE);
-                } else {
+                    invalid_login.setVisibility(View.VISIBLE); //notify user of bad attempt
+                } else { //suceesful attempt will direct user to application
                     Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.AppScreen");
                     startActivity(intent);
                 }
@@ -55,8 +60,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Cancels login attempt and directs user back to MainActivity screen. No user info stored.
+     */
     public void cancel() {
         Log.d("Edit", "cancel login");
+        //a cancel button click takes user to main screen disregarding any user inputs
         cancelButton = findViewById(R.id.buttonCancelLogin);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +76,13 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method that determines if user login attempt is successful.
+     * If empty database, null inputs, or invalid info then attempt is unsuccessful.
+     * @param _username the user's inputted username
+     * @param _password the user's inputted password
+     * @return true if valid login information, false for null/invalid info
+     */
     private boolean validate(String _username, String _password) {
         if (UserDatabase.usernames.size() == 0) { return false; }
         else if (_username == null || _password == null) { return false; }
@@ -78,6 +94,10 @@ public class LoginActivity extends AppCompatActivity {
         return false;
     }
 
+    /**
+     * Updates our Log with current database information (debug & message tracking purposes).
+     * Iterates through each list from database and stores entries w/ associated tags.
+     */
     private void currentUserDatabase() {
         for (int i = 0; i < UserDatabase.usernames.size(); i++) {
             Log.d("USER", "Username: " + UserDatabase.usernames.get(i));
@@ -85,50 +105,4 @@ public class LoginActivity extends AppCompatActivity {
             Log.d("MAIL", "Email: " + UserDatabase.emails.get(i));
         }
     }
-//    /**
-//     * The method called when the user cancels/backs out of a login attempt w/ "Cancel"
-//     *
-//     * @param view the selected view
-//     */
-//    public void onCancelPressed(View view) {
-//        Log.d("Edit", "canceled");
-//        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//        startActivity(intent);
-//    }
-//
-//    /**
-//     * The method called when the user attempts to log-in to their account w/ "Login"
-//     * If the user enters an existing username w/ matching password, they are directed
-//     * into the application (success). Otherwise, user is notified of failed attempt.
-//     *
-//     * @param view the selected view
-//     */
-//    public void onLoginButtonPressed(View view) {
-//        Log.d("Edit", "Logged In");
-//
-//        //initialize data with inputted information from the user
-//        EditText username = findViewById(R.id.enterLoginUsername);
-//        EditText password = findViewById(R.id.enterLoginPassword);
-//        TextView invalid_login = findViewById(R.id.invalidNotification);
-//
-//        //login unsuccessful, i.e. inputs do not match existing data
-//        if (!validate(username.getText().toString(), password.getText().toString())) {
-//            invalid_login.setVisibility(View.VISIBLE); //show bad attempt notification
-//        } else { //login successful, i.e. inputs match existing data
-//            Intent intent = new Intent(LoginActivity.this, AppScreen.class);
-//            startActivity(intent); //go into application
-//        }
-//    }
-//
-//    /**
-//     * Method to check user's login inputs. Valid if an existing username with matching
-//     * password associated is entered by the user. Invalid otherwise.
-//     *
-//     * @param user the inputted username by the user
-//     * @param pass the inputted password by the user
-//     * @return true if user enters valid information, false if any invalid inputs.
-//     */
-//    public boolean validate(String user, String pass) {
-//        return user.equals("user") && pass.equals("pass");
-//    }
 }

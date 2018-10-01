@@ -2,7 +2,6 @@ package edu.gatech.micheyang.pbjdonationtracker;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.content.Intent;
 import android.widget.Button;
@@ -25,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         pressRegister();
     }
 
+    /**
+     * Method to handle a login-button press, directs the user to Login screen.
+     */
     public void pressLogin() {
         logButton = (Button) findViewById(R.id.login);
         logButton.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method to handle a register-button press, directs user to Registration screen.
+     */
     public void pressRegister() {
         regButton = (Button) findViewById(R.id.register);
         regButton.setOnClickListener(new View.OnClickListener() {
@@ -48,27 +53,3 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
-
-
-//    /***
-//     * The method called when a user requests to log-in to application w/ "LOGIN"
-//     *
-//     * @param view the selected view
-//     */
-//    public void onLoginPressed(View view) {
-//        Log.d("Edit", "Log in");
-//        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-//        startActivity(intent);
-//    }
-//
-//    /***
-//     * The method called when a user requests to make a new account w/ "REGISTER"
-//     *
-//     * @param view the selected view
-//     */
-//    public void onRegisterPressed(View view) {
-//        Log.d("Edit", "Log in");
-//        Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
-//        startActivity(intent);
-//    }
-//}

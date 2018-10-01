@@ -58,7 +58,7 @@ public class UserDatabase {
     public User getUser(String username) {
         if (username == null) {
             throw new IllegalArgumentException("Cannot use null argument.");
-        } else if (users.containsKey(username) {
+        } else if (users.containsKey(username)) {
             throw new IllegalArgumentException("User not found in system.");
         } else {
             return users.get(username);
