@@ -1,4 +1,4 @@
-package model;
+package edu.gatech.micheyang.pbjdonationtracker.model;
 
 public class User {
 
