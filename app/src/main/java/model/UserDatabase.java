@@ -1,25 +1,17 @@
-package edu.gatech.micheyang.pbjdonationtracker.model;
+package model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.IllegalFormatWidthException;
 
 public class UserDatabase {
 
+    //stores username as key with associated User object as value
     private HashMap<String, User> users;
 
+    //constructor to initialize database with empty hashmap
     public UserDatabase() {
         users = new HashMap<>();
-        addUser(new User("user", "pass", "email1"));
     }
-
-//    private UserDatabase() {
-//        users = new HashMap<>();
-//        users.put("user1", new User("user1", "pass1", "email1"));
-//    }
-
-    public HashMap<String, User> getUsers() { return users; }
-    public void setUsers(HashMap<String, User> _users) { users = _users; }
 
     /**
      * Adds a new user to the database.
@@ -66,22 +58,12 @@ public class UserDatabase {
     public User getUser(String username) {
         if (username == null) {
             throw new IllegalArgumentException("Cannot use null argument.");
-        } else if (users.containsKey(username)) {
+        } else if (users.containsKey(username) {
             throw new IllegalArgumentException("User not found in system.");
         } else {
             return users.get(username);
         }
     }
-
-    /**
-     * Returns a list of all User objects currently stored in database.
-     *
-     * @return list of all users in database.
-     */
-    public ArrayList<String> listUsernames() {
-        return new ArrayList<String>(users.keySet());
-    }
-
 
     /**
      * Checks if a user w/ inputted username exists in our database.
@@ -138,6 +120,7 @@ public class UserDatabase {
         }
         System.out.println("Updated information:\n" + oldUser.toString() + "\n"
                 + updatedUser.toString());
+
     }
 
 
