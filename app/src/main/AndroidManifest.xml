@@ -9,25 +9,43 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".HomeScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".LoginActivity"
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MainActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".AppScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="edu.gatech.micheyang.pbjdonationtracker.LoginActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AppScreen"
             android:label="@string/title_activity_app_screen"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".RegistrationActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="edu.gatech.micheyang.pbjdonationtracker.AppScreen" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RegistrationActivity"
             android:label="@string/title_activity_registration"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="edu.gatech.micheyang.pbjdonationtracker.RegistrationActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
