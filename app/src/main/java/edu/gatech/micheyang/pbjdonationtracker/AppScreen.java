@@ -8,9 +8,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+
+import model.LocationList;
+import model.Location;
+
 public class AppScreen extends AppCompatActivity {
+
+    private Button locationListButton;
 
     /***
      * Method that creates the activity when it is launched.
@@ -23,7 +35,45 @@ public class AppScreen extends AppCompatActivity {
         setContentView(R.layout.activity_app_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        pressViewLocations();
+    }
 
+    public void pressViewLocations() {
+        locationListButton = (Button) findViewById(R.id.location_list_button);
+        locationListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                readCSVFile();
+                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.ListOfLocations");
+                startActivity(intent);
+            }
+        });
+    }
+
+    public static final int NAME_POSITION = 1;
+
+    private void readCSVFile() {
+        LocationList model = LocationList.INSTANCE;
+
+        try {
+            //Open a stream on the raw file
+            InputStream is = getResources().openRawResource(R.raw.locationdata);
+            //From here we probably should call a model method and pass the InputStream
+            //Wrap it in a BufferedReader so that we get the readLine() method
+            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+
+            String line;
+            br.readLine(); //get rid of header line
+            while ((line = br.readLine()) != null) {
+                //Log.d(MainActivity.TAG, line);
+                String[] tokens = line.split(",");
+                int id = Integer.parseInt(tokens[0]);
+                model.addLocation(new Location(tokens[NAME_POSITION], tokens[2], id, tokens[3]));
+            }
+            br.close();
+        } catch (IOException e) {
+            //Log.e(MainActivity.TAG, "error reading assets", e);
+        }
     }
 
     /***

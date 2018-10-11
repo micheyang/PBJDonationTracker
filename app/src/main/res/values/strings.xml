@@ -11,6 +11,7 @@
     <string name="cancel">Cancel</string>
     <string name="passwordLabel">Password</string>
     <string name="logout">Log Out</string>
+    <string name="viewLocationList">View Locations</string>
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="userNameText">username</string>
     <string name="enterName">Enter name</string>
@@ -26,4 +27,5 @@
     </string-array>
     <string name="title_location_list">Locations</string>
     <string name="title_location_detail">Location Detail</string>
+    <string name="title_activity_list_of_locations">ListOfLocations</string>
 </resources>
