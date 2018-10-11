@@ -64,11 +64,11 @@ public class ListOfLocations extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                         Context context = v.getContext();
-                        //Intent intent = new Intent(context, DataItemDetailActivity.class);
+                        Intent intent = new Intent(context, LocationDetailActivity.class);
                         Log.d("MYAPP", "Switch to detailed view for item: " + holder.location.getKey());
-                        //intent.putExtra(DataItemDetailFragment.ARG_ITEM_ID, holder.location.getId());
+                        intent.putExtra(LocationDetailFragment.ARG_ITEM_ID, holder.location.getKey());
 
-                        //context.startActivity(intent);
+                        context.startActivity(intent);
                 }
             });
         }

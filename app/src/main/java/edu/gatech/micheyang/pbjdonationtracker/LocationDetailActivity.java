@@ -56,8 +56,8 @@ public class LocationDetailActivity extends AppCompatActivity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(LocationDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(LocationDetailFragment.ARG_ITEM_ID));
+            arguments.putInt(LocationDetailFragment.ARG_ITEM_ID,
+                    getIntent().getIntExtra(LocationDetailFragment.ARG_ITEM_ID, 1000));
             LocationDetailFragment fragment = new LocationDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
