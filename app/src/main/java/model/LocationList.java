@@ -1,5 +1,6 @@
 package model;
 
+import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,11 +22,11 @@ public class LocationList {
     }
 
     //Below method may be needed in the future to search by location IDs
-    /*public Location findLocationById(int id) {
+    public Location findLocationByKey(int key) {
         for (Location d : locations) {
-            if (d.getId() == id) return d;
+            if (d.getKey() == key) return d;
         }
-        Log.d("MYAPP", "Warning - Failed to find id: " + id);
+        Log.d("MYAPP", "Warning - Failed to find key: " + key);
         return null;
-    }*/
+    }
 }
