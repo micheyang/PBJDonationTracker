@@ -51,6 +51,8 @@ public class AppScreen extends AppCompatActivity {
     }
 
     public static final int NAME_POSITION = 1;
+    public static final int PHONE_NUMBER_POSITION = 9;
+    public static final int WEBSITE_POSITION = 10;
 
     private void readCSVFile() {
         LocationList model = LocationList.INSTANCE;
@@ -67,8 +69,8 @@ public class AppScreen extends AppCompatActivity {
             while ((line = br.readLine()) != null) {
                 //Log.d(MainActivity.TAG, line);
                 String[] tokens = line.split(",");
-                int id = Integer.parseInt(tokens[0]);
-                model.addLocation(new Location(tokens[NAME_POSITION], tokens[2], id, tokens[3]));
+                int key = Integer.parseInt(tokens[0]);
+                model.addLocation(new Location(key, tokens[NAME_POSITION], tokens[PHONE_NUMBER_POSITION] , tokens[WEBSITE_POSITION]));
             }
             br.close();
         } catch (IOException e) {

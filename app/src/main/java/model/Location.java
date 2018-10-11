@@ -2,25 +2,32 @@ package model;
 
 public class Location {
 
+    private int key;
     private String name;
-    private String fruit;
-    private int id;
-    private String email;
+    private String latitude;
+    private String longitude;
+    private String streetAddress;
+    private String city;
+    private String state;
+    private int zipcode;
+    private String type;
+    private String phoneNumber;
+    private String website;
 
-    public Location(String n, String f, int i, String e) {
-        name = n;
-        fruit = f;
-        id = i;
-        email = e;
+    public Location(int key, String name, String phoneNumber, String website) {
+        this.key = key;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.website = website;
     }
 
     public String toString() {
-        return name + " " + id;
+        return "Location " + key + " is: " + name;
     }
 
+    public int getKey() { return key; }
     public String getName() { return name; }
-    public String getFruit() { return fruit; }
-    public String getEmail() { return email; }
-    public int getId() { return id; }
+    public String getPhoneNumber() { return phoneNumber; }
+    public String getWebsite() { return website; }
 
 }

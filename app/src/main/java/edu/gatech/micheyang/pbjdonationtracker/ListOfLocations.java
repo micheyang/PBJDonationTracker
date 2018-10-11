@@ -57,7 +57,7 @@ public class ListOfLocations extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.location = mValues.get(position);
-            holder.mIdView.setText("" + mValues.get(position).getId());
+            holder.mIdView.setText("" + mValues.get(position).getKey());
             holder.mContentView.setText(mValues.get(position).getName());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +65,7 @@ public class ListOfLocations extends AppCompatActivity {
                 public void onClick(View v) {
                         Context context = v.getContext();
                         //Intent intent = new Intent(context, DataItemDetailActivity.class);
-                        Log.d("MYAPP", "Switch to detailed view for item: " + holder.location.getId());
+                        Log.d("MYAPP", "Switch to detailed view for item: " + holder.location.getKey());
                         //intent.putExtra(DataItemDetailFragment.ARG_ITEM_ID, holder.location.getId());
 
                         //context.startActivity(intent);
