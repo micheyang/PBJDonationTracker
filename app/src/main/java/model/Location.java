@@ -14,9 +14,17 @@ public class Location {
     private String phoneNumber;
     private String website;
 
-    public Location(int key, String name, String phoneNumber, String website) {
+    public Location(int key, String name, String latitude, String longitude, String streetAddress,
+                    String city, String state, int zipcode, String type, String phoneNumber, String website) {
         this.key = key;
         this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.streetAddress = streetAddress;
+        this. city = city;
+        this.state = state;
+        this.zipcode = zipcode;
+        this.type = type;
         this.phoneNumber = phoneNumber;
         this.website = website;
     }
@@ -27,6 +35,13 @@ public class Location {
 
     public int getKey() { return key; }
     public String getName() { return name; }
+    public String getLatitude() { return latitude; }
+    public String getLongitude() { return longitude; }
+    public String getStreetAddress() { return streetAddress; }
+    public String getCity() { return city; }
+    public String getState() { return state; }
+    public int getZipcode() { return zipcode; }
+    public String getType() { return type; }
     public String getPhoneNumber() { return phoneNumber; }
     public String getWebsite() { return website; }
 
