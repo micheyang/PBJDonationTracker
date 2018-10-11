@@ -51,6 +51,12 @@ public class AppScreen extends AppCompatActivity {
     }
 
     public static final int NAME_POSITION = 1;
+    public static final int LATITUDE_POSITION = 2;
+    public static final int LONGITUDE_POSITION = 3;
+    public static final int STREET_ADDRESS_POSITION = 4;
+    public static final int CITY_POSITION = 5;
+    public static final int STATE_POSITION = 6;
+    public static final int TYPE_POSITION = 8;
     public static final int PHONE_NUMBER_POSITION = 9;
     public static final int WEBSITE_POSITION = 10;
 
@@ -68,9 +74,13 @@ public class AppScreen extends AppCompatActivity {
             br.readLine(); //get rid of header line
             while ((line = br.readLine()) != null) {
                 //Log.d(MainActivity.TAG, line);
-                String[] tokens = line.split(",");
-                int key = Integer.parseInt(tokens[0]);
-                model.addLocation(new Location(key, tokens[NAME_POSITION], tokens[PHONE_NUMBER_POSITION] , tokens[WEBSITE_POSITION]));
+                String[] details = line.split(",");
+                int key = Integer.parseInt(details[0]);
+                int zipCode = Integer.parseInt(details[7]);
+                model.addLocation(new Location(key, details[NAME_POSITION], details[LATITUDE_POSITION],
+                        details[LONGITUDE_POSITION], details[STREET_ADDRESS_POSITION], details[CITY_POSITION],
+                        details[STATE_POSITION], zipCode, details[TYPE_POSITION],
+                        details[PHONE_NUMBER_POSITION], details[WEBSITE_POSITION]));
             }
             br.close();
         } catch (IOException e) {

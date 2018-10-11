@@ -9,21 +9,21 @@ public class Location {
     private String streetAddress;
     private String city;
     private String state;
-    private int zipcode;
+    private int zipCode;
     private String type;
     private String phoneNumber;
     private String website;
 
     public Location(int key, String name, String latitude, String longitude, String streetAddress,
-                    String city, String state, int zipcode, String type, String phoneNumber, String website) {
+                    String city, String state, int zipCode, String type, String phoneNumber, String website) {
         this.key = key;
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
         this.streetAddress = streetAddress;
-        this. city = city;
+        this.city = city;
         this.state = state;
-        this.zipcode = zipcode;
+        this.zipCode = zipCode;
         this.type = type;
         this.phoneNumber = phoneNumber;
         this.website = website;
@@ -40,7 +40,7 @@ public class Location {
     public String getStreetAddress() { return streetAddress; }
     public String getCity() { return city; }
     public String getState() { return state; }
-    public int getZipcode() { return zipcode; }
+    public int getZipCode() { return zipCode; }
     public String getType() { return type; }
     public String getPhoneNumber() { return phoneNumber; }
     public String getWebsite() { return website; }
