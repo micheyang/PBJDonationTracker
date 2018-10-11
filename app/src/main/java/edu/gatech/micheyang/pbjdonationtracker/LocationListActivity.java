@@ -1,3 +1,4 @@
+/*
 package edu.gatech.micheyang.pbjdonationtracker;
 
 import android.content.Context;
@@ -9,15 +10,24 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import edu.gatech.micheyang.pbjdonationtracker.dummy.DummyContent;
+import model.Location;
 
+import android.os.Parcelable;
+import android.os.Bundle;
+import android.widget.ListView;
+import java.io.InputStream;
 import java.util.List;
 
+import model.LocationDetailFragment;
+
+*/
 /**
  * An activity representing a list of Locations. This activity
  * has different presentations for handset and tablet-size devices. On
@@ -25,19 +35,31 @@ import java.util.List;
  * lead to a {@link LocationDetailActivity} representing
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
- */
+ *//*
+
 public class LocationListActivity extends AppCompatActivity {
 
-    /**
+    */
+/**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
-     */
+     *//*
+
     private boolean mTwoPane;
+
+    */
+/*private ListView listView;
+    private ItemArrayAdapter itemArrayAdapter;*//*
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_list);
+*//*
+
+
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -66,13 +88,14 @@ public class LocationListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, DummyContent.ITEMS, mTwoPane));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(SimpleModel.INSTANCE.getItems()));
     }
 
     public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final ItemListActivity mParentActivity;
+        */
+/*private final ItemListActivity mParentActivity;
         private final List<DummyContent.DummyItem> mValues;
         private final boolean mTwoPane;
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -103,6 +126,13 @@ public class LocationListActivity extends AppCompatActivity {
             mValues = items;
             mParentActivity = parent;
             mTwoPane = twoPane;
+        }*//*
+
+
+        private final List<Location> mValues;
+
+        public SimpleItemRecyclerViewAdapter(List<Location> items) {
+            mValues = items;
         }
 
         @Override
@@ -114,11 +144,31 @@ public class LocationListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mIdView.setText(mValues.get(position).id);
-            holder.mContentView.setText(mValues.get(position).content);
+            holder.mIdView.setText(mValues.get(position).getId());
+            holder.mContentView.setText(mValues.get(position).getName());
 
             holder.itemView.setTag(mValues.get(position));
-            holder.itemView.setOnClickListener(mOnClickListener);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mTwoPane) {
+                        Bundle arguments = new Bundle();
+                        arguments.putInt(LocationDetailFragment.ARG_ITEM_ID, holder.mItem.getId());
+                        LocationDetailFragment fragment = new DataItemDetailFragment();
+                        fragment.setArguments(arguments);
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.dataitem_detail_container, fragment)
+                                .commit();
+                    } else {
+                        Context context = v.getContext();
+                        Intent intent = new Intent(context, DataItemDetailActivity.class);
+                        Log.d("MYAPP", "Switch to detailed view for item: " + holder.mItem.getId());
+                        intent.putExtra(DataItemDetailFragment.ARG_ITEM_ID, holder.mItem.getId());
+
+                        context.startActivity(intent);
+                    }
+                }
+            });
         }
 
         @Override
@@ -138,3 +188,4 @@ public class LocationListActivity extends AppCompatActivity {
         }
     }
 }
+*/
