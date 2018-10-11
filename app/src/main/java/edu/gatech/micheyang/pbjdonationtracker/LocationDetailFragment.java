@@ -13,7 +13,7 @@ import edu.gatech.micheyang.pbjdonationtracker.dummy.DummyContent;
 
 /**
  * A fragment representing a single Location detail screen.
- * This fragment is either contained in a {@link LocationListActivity}
+ * This fragment is either contained in a {@link ListOfLocations}
  * in two-pane mode (on tablets) or a {@link LocationDetailActivity}
  * on handsets.
  */
