@@ -56,6 +56,7 @@ public class AppScreen extends AppCompatActivity {
     public static final int STREET_ADDRESS_POSITION = 4;
     public static final int CITY_POSITION = 5;
     public static final int STATE_POSITION = 6;
+    public static final int ZIP_CODE_POSITION = 7;
     public static final int TYPE_POSITION = 8;
     public static final int PHONE_NUMBER_POSITION = 9;
     public static final int WEBSITE_POSITION = 10;
@@ -76,10 +77,9 @@ public class AppScreen extends AppCompatActivity {
                 //Log.d(MainActivity.TAG, line);
                 String[] details = line.split(",");
                 int key = Integer.parseInt(details[0]);
-                int zipCode = Integer.parseInt(details[7]);
                 model.addLocation(new Location(key, details[NAME_POSITION], details[LATITUDE_POSITION],
                         details[LONGITUDE_POSITION], details[STREET_ADDRESS_POSITION], details[CITY_POSITION],
-                        details[STATE_POSITION], zipCode, details[TYPE_POSITION],
+                        details[STATE_POSITION], details[ZIP_CODE_POSITION], details[TYPE_POSITION],
                         details[PHONE_NUMBER_POSITION], details[WEBSITE_POSITION]));
             }
             br.close();

@@ -9,13 +9,13 @@ public class Location {
     private String streetAddress;
     private String city;
     private String state;
-    private int zipCode;
+    private String zipCode;
     private String type;
     private String phoneNumber;
     private String website;
 
     public Location(int key, String name, String latitude, String longitude, String streetAddress,
-                    String city, String state, int zipCode, String type, String phoneNumber, String website) {
+                    String city, String state, String zipCode, String type, String phoneNumber, String website) {
         this.key = key;
         this.name = name;
         this.latitude = latitude;
@@ -40,7 +40,7 @@ public class Location {
     public String getStreetAddress() { return streetAddress; }
     public String getCity() { return city; }
     public String getState() { return state; }
-    public int getZipCode() { return zipCode; }
+    public String getZipCode() { return zipCode; }
     public String getType() { return type; }
     public String getPhoneNumber() { return phoneNumber; }
     public String getWebsite() { return website; }
