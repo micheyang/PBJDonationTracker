@@ -67,13 +67,13 @@ public class LocationDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.type)).setText(mItem.getType());
-            ((TextView) rootView.findViewById(R.id.phone_number)).setText(mItem.getPhoneNumber());
-            ((TextView) rootView.findViewById(R.id.street_address)).setText(mItem.getStreetAddress());
+            ((TextView) rootView.findViewById(R.id.type)).setText(getResources().getString(R.string.location, mItem.getType()));
+            ((TextView) rootView.findViewById(R.id.phone_number)).setText(getResources().getString(R.string.phone_num, mItem.getPhoneNumber()));
+            ((TextView) rootView.findViewById(R.id.website)).setText(getResources().getString(R.string.website, mItem.getWebsite()));
+            ((TextView) rootView.findViewById(R.id.street_address)).setText(getResources().getString(R.string.address, mItem.getStreetAddress()));
             ((TextView) rootView.findViewById(R.id.city)).setText(mItem.getCity());
             ((TextView) rootView.findViewById(R.id.state)).setText(mItem.getState());
             ((TextView) rootView.findViewById(R.id.zip_code)).setText(mItem.getZipCode());
-            ((TextView) rootView.findViewById(R.id.website)).setText(mItem.getWebsite());
         }
 
         return rootView;
