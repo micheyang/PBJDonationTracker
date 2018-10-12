@@ -28,4 +28,9 @@
     <string name="title_location_list">Locations</string>
     <string name="title_location_detail">Location Detail</string>
     <string name="title_activity_list_of_locations">ListOfLocations</string>
+    <string name="location">Location Type: %1$s</string>
+    <string name="phone_num">Phone Number: %1$s</string>
+    <string name="address">Address: %1$s</string>
+    <string name="website">Website: %1$s</string>
+
 </resources>
