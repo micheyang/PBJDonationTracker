@@ -50,9 +50,9 @@ public class EmployeeAppScreen extends AppCompatActivity {
         });
     }
 
-    public void pressViewMyLocationInventory() {
+    /*public void pressViewMyLocationInventory() {
 
-    }
+    }*/
 
     public static final int NAME_POSITION = 1;
     public static final int LATITUDE_POSITION = 2;

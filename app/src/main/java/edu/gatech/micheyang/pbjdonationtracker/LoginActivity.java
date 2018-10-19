@@ -117,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
             Log.d("USER", "Username: " + UserDatabase.usernames.get(i));
             Log.d("PASS", "Password: " + UserDatabase.passwords.get(i));
             Log.d("MAIL", "Email: " + UserDatabase.emails.get(i));
+            Log.d("TYPE", "Type: " + UserDatabase.types.get(i));
         }
     }
 }
