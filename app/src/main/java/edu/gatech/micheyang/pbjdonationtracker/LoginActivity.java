@@ -18,7 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView invalid_login; //text notification for bad login attempt
     private Button loginButton; //login button
     private Button cancelButton; //cancel button
-
+    private int equalsTracker;
 
     /***
      * Method that creates the activity when it is launched.
@@ -52,9 +52,14 @@ public class LoginActivity extends AppCompatActivity {
                 currentUserDatabase();
                 if (!validate(username.getText().toString(), password.getText().toString())) {
                     invalid_login.setVisibility(View.VISIBLE); //notify user of bad attempt
-                } else { //suceesful attempt will direct user to application
-                    Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.AppScreen");
-                    startActivity(intent);
+                } else { //successful attempt will direct user to application
+                    if (userTypeValidate()) { //if user is a location employee
+                        Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.EmployeeAppScreen");
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.AppScreen");
+                        startActivity(intent);
+                    }
                 }
             }
         });
@@ -88,10 +93,19 @@ public class LoginActivity extends AppCompatActivity {
         else if (_username == null || _password == null) { return false; }
         for (int i = 0; i < UserDatabase.usernames.size(); i++) {
             if (UserDatabase.usernames.get(i).equals(_username)) {
+                equalsTracker = i;
                 return UserDatabase.passwords.get(i).equals(_password);
             }
         }
         return false;
+    }
+
+    /**
+     * Method that determines if user type is a location employee
+     * @return true if is a location employee, false if not
+     */
+    private boolean userTypeValidate() {
+        return (UserDatabase.types.get(equalsTracker).equals("Location Employee"));
     }
 
     /**
