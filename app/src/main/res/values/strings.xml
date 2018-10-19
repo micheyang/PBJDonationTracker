@@ -23,6 +23,7 @@
     <string-array name="acctTypes">
         <item>General User</item>
         <item>Location Employee</item>
+        <item>Manager</item>
         <item>Administrator</item>
     </string-array>
     <string name="title_location_list">Locations</string>
@@ -34,5 +35,22 @@
     <string name="phone_num">Phone Number: %1$s</string>
     <string name="address">Address: %1$s</string>
     <string name="website">Website: %1$s</string>
-
+    <string name="title_activity_employee_app_screen">EmployeeAppScreen</string>
+    <string name="viewLocationInventory">View My Location\'s Inventory</string>
+    <string name="title_activity_add_item_screen">AddItemScreen</string>
+    <string name = "addItem">Add Item</string>
+    <string name="enterTime">Donation Time</string>
+    <string name="enterLocation">Select Donation Location</string>
+    <string name="enterShortDescr">Short Item Description</string>
+    <string name="enterFullDescr">Full Item Description</string>
+    <string name ="enterValue">Donation Value</string>
+    <string name="enterCategory">Selection Item Category</string>
+    <string-array name="itemCategories">
+        <item>Clothing</item>
+        <item>Hat</item>
+        <item>Kitchen</item>
+        <item>Electronics</item>
+        <item>Household</item>
+        <item>Other</item>
+    </string-array>
 </resources>

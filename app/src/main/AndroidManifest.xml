@@ -54,10 +54,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <!--<activity-->
-            <!--android:name=".LocationListActivity"-->
-            <!--android:label="@string/title_location_list"-->
-            <!--android:theme="@style/AppTheme.NoActionBar" />-->
+        <!-- <activity -->
+        <!-- android:name=".LocationListActivity" -->
+        <!-- android:label="@string/title_location_list" -->
+        <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
         <activity
             android:name=".LocationDetailActivity"
             android:label="@string/title_location_detail"
@@ -77,6 +77,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".EmployeeAppScreen"
+            android:label="@string/title_activity_employee_app_screen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddItemScreen"
+            android:label="@string/title_activity_add_item_screen"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
