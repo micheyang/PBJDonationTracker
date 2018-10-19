@@ -23,6 +23,7 @@ import model.Location;
 public class EmployeeAppScreen extends AppCompatActivity {
 
     private Button locationListButton;
+    private Button locationInventoryButton;
 
     /***
      * Method that creates the activity when it is launched.
@@ -36,6 +37,7 @@ public class EmployeeAppScreen extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         pressViewLocations();
+        pressViewMyLocationInventory();
     }
 
     public void pressViewLocations() {
@@ -50,9 +52,17 @@ public class EmployeeAppScreen extends AppCompatActivity {
         });
     }
 
-    /*public void pressViewMyLocationInventory() {
-
-    }*/
+    public void pressViewMyLocationInventory() {
+        locationInventoryButton = (Button) findViewById(R.id.location_inventory_button);
+        locationInventoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                readCSVFile();
+                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.AddItemScreen");
+                startActivity(intent);
+            }
+        });
+    }
 
     public static final int NAME_POSITION = 1;
     public static final int LATITUDE_POSITION = 2;

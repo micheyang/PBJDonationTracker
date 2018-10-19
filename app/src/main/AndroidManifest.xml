@@ -77,7 +77,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".EmployeeAppScreen"
             android:label="@string/title_activity_employee_app_screen"
@@ -88,10 +87,19 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AddItemScreen"
             android:label="@string/title_activity_add_item_screen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="edu.gatech.micheyang.pbjdonationtracker.AddItemScreen" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ListOfItems"
+            android:label="@string/title_activity_list_of_items"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
