@@ -25,4 +25,7 @@ public class UserDatabase {
     //stores all type values for user
     static List<String> types = new ArrayList<>();
 
+    //stores location employee id's 
+    static List<Integer> location = new ArrayList<>();
+
 }

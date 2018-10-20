@@ -21,14 +21,30 @@ public class RegistrationActivity extends AppCompatActivity {
     private Button regButton; //register button
     private Button cancelButton; //cancel button
 
+    DatabaseHelper userDB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
+        userDB = new DatabaseHelper(this);
+
+//        addUserData(); //for user database
+
         register(); //handles user registration attempt
         cancel(); //handles user cancelled attempt
     }
+//
+//    public void addUserData() {
+//        regButton = (Button) findViewById(R.id.regRegButton);
+//        regButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String username =
+//            }
+//        });
+ //   }
 
     public void register() {
         Log.d("Edit", "attempt register");
@@ -40,6 +56,17 @@ public class RegistrationActivity extends AppCompatActivity {
 
         //a regButton click will check user's inputs for in/valid attempt
         regButton = (Button) findViewById(R.id.regRegButton);
+//        regButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String userText = username.getText().toString();
+//                String passText = password.getText().toString();
+//                String emailText = email.getText().toString();
+//                String typeText = type.getSelectedItem().toString();
+//
+//                boolean added = userDB.addData(userText, passText, emailText, typeText);
+//            }
+//        });
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,6 +79,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     UserDatabase.passwords.add(password.getText().toString());
                     UserDatabase.emails.add(email.getText().toString());
                     UserDatabase.types.add(type.getSelectedItem().toString());
+                    UserDatabase.location.add(0);
                     startActivity(intent);
                 }
             }
