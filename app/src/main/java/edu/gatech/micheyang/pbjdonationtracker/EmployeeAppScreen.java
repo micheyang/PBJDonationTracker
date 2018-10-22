@@ -24,6 +24,7 @@ public class EmployeeAppScreen extends AppCompatActivity {
 
     private Button locationListButton;
     private Button locationInventoryButton;
+    private Button addDonationButton;
 
     /***
      * Method that creates the activity when it is launched.
@@ -36,8 +37,20 @@ public class EmployeeAppScreen extends AppCompatActivity {
         setContentView(R.layout.activity_employee_app_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        pressAddDonation();
         pressViewLocations();
         pressViewMyLocationInventory();
+    }
+
+    public void pressAddDonation() {
+        addDonationButton = (Button) findViewById(R.id.add_donation_button);
+        addDonationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.AddItemScreen");
+                startActivity(intent);
+            }
+        });
     }
 
     public void pressViewLocations() {
@@ -58,8 +71,8 @@ public class EmployeeAppScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 readCSVFile();
-                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.AddItemScreen");
-                startActivity(intent);
+//                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.AddItemScreen");
+//                startActivity(intent);
             }
         });
     }

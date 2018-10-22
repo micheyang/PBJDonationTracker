@@ -54,4 +54,13 @@
         <item>Other</item>
     </string-array>
     <string name="title_activity_list_of_items">ListOfItems</string>
+    <string name="addDonation">Add A Donation</string>
+    <string-array name="allLocations">
+        <item>AFD Station 4</item>
+        <item>Boys &amp; Girls Club W.W. Woolfolk</item>
+        <item>Pathway Upper Room Christian Ministries</item>
+        <item>Pavilion of Hope Inc</item>
+        <item>D&amp;D Convenience Store</item>
+        <item>Keep North Fulton Beautiful</item>
+    </string-array>
 </resources>

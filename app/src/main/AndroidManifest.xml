@@ -97,10 +97,5 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ListOfItems"
-            android:label="@string/title_activity_list_of_items"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
-
 </manifest>
