@@ -21,14 +21,14 @@ public class RegistrationActivity extends AppCompatActivity {
     private Button regButton; //register button
     private Button cancelButton; //cancel button
 
-    DatabaseHelper userDB;
+//    DatabaseHelper userDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        userDB = new DatabaseHelper(this);
+//        userDB = new DatabaseHelper(this);
 
 //        addUserData(); //for user database
 
