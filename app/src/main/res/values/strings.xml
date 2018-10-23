@@ -26,6 +26,10 @@
         <item>Manager</item>
         <item>Administrator</item>
     </string-array>
+
+    <string name="time">Time: %1$s</string>
+    <string name="place">Item Location: %1$s</string>
+
     <string name="title_location_list">Locations</string>
     <string name="title_location_detail">Location Detail</string>
     <string name="title_activity_list_of_locations">ListOfLocations</string>
@@ -63,4 +67,5 @@
         <item>D&amp;D CONVENIENCE STORE</item>
         <item>KEEP NORTH FULTON BEAUTIFUL</item>
     </string-array>
+    <string name="title_activity_item_detail">ItemDetailActivity</string>
 </resources>

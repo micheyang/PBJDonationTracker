@@ -66,7 +66,7 @@ public class AddItemScreen extends AppCompatActivity {
 //                ItemDatabase.fDescriptions.add(fullDescription.getText().toString());
 //                ItemDatabase.values.add(value.getText().toString());
 //                ItemDatabase.categories.add(category.getSelectedItem().toString());
-                ItemDatabase.items.add(new Item(time.getText().toString(), "default location",
+                ItemDatabase.INSTANCE.getItems().add(new Item(time.getText().toString(), "default location",
                         shortDescription.getText().toString(), fullDescription.getText().toString(),
                         value.getText().toString(), category.getSelectedItem().toString()));
                 currentItemDatabase();
@@ -89,8 +89,8 @@ public class AddItemScreen extends AppCompatActivity {
     }
 
     private void currentItemDatabase() {
-        for (int i = 0; i < ItemDatabase.items.size(); i++) {
-            Log.d("Item", "Item: " + ItemDatabase.items.get(i));
+        for (int i = 0; i < ItemDatabase.INSTANCE.getItems().size(); i++) {
+            Log.d("Item", "Item: " + ItemDatabase.INSTANCE.getItems().get(i));
 
         }
     }
