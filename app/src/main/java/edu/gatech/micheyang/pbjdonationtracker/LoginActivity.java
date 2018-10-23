@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginButton; //login button
     private Button cancelButton; //cancel button
     private int equalsTracker;
+    public static int userIndex; //to keep track of user when after they login
 
     /***
      * Method that creates the activity when it is launched.
@@ -94,6 +95,7 @@ public class LoginActivity extends AppCompatActivity {
         for (int i = 0; i < UserDatabase.usernames.size(); i++) {
             if (UserDatabase.usernames.get(i).equals(_username)) {
                 equalsTracker = i;
+                userIndex = i;
                 return UserDatabase.passwords.get(i).equals(_password);
             }
         }

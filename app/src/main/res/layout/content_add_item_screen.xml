@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fillViewport="false">
@@ -158,6 +159,15 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
             android:text="@string/cancel" />
+
+        <TextView
+            android:id="@+id/invalidLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You do not have permission to add to this Location"
+            android:textColor="#e00d0d"
+            android:textStyle="bold"
+            android:visibility="invisible"/>
 
     </LinearLayout>
 </ScrollView>
