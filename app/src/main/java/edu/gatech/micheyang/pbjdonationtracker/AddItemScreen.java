@@ -19,7 +19,7 @@ import model.ItemDatabase;
 public class AddItemScreen extends AppCompatActivity {
 
     private EditText time;
-//    private EditText location;
+    private Spinner location;
     private EditText shortDescription;
     private EditText fullDescription;
     private EditText value;
@@ -49,7 +49,7 @@ public class AddItemScreen extends AppCompatActivity {
     }
     public void add() {
         time = (EditText) findViewById(R.id.enterDonateDate);
-//        location =
+        location = (Spinner) findViewById(R.id.selectLocation);
         shortDescription= (EditText) findViewById(R.id.enterShortDescr);
         fullDescription = (EditText) findViewById(R.id.enterFullDescr);
         value = (EditText) findViewById(R.id.enterItemValue);
@@ -66,7 +66,7 @@ public class AddItemScreen extends AppCompatActivity {
 //                ItemDatabase.fDescriptions.add(fullDescription.getText().toString());
 //                ItemDatabase.values.add(value.getText().toString());
 //                ItemDatabase.categories.add(category.getSelectedItem().toString());
-                ItemDatabase.items.add(new Item(time.getText().toString(), "default location",
+                ItemDatabase.items.add(new Item(time.getText().toString(), location.getSelectedItem().toString(),
                         shortDescription.getText().toString(), fullDescription.getText().toString(),
                         value.getText().toString(), category.getSelectedItem().toString()));
                 currentItemDatabase();
