@@ -70,9 +70,9 @@ public class EmployeeAppScreen extends AppCompatActivity {
         locationInventoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                readCSVFile();
-//                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.AddItemScreen");
-//                startActivity(intent);
+//                readCSVFile();
+                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.ListOfItems");
+                startActivity(intent);
             }
         });
     }
