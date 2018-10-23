@@ -21,14 +21,15 @@ public class RegistrationActivity extends AppCompatActivity {
     private Button regButton; //register button
     private Button cancelButton; //cancel button
 
-    DatabaseHelper userDB;
+
+//    DatabaseHelper userDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        userDB = new DatabaseHelper(this);
+//        userDB = new DatabaseHelper(this);
 
 //        addUserData(); //for user database
 
@@ -74,13 +75,19 @@ public class RegistrationActivity extends AppCompatActivity {
                         password.getText().toString(), email.getText().toString())) {
                     invalid_attempt.setVisibility(View.VISIBLE);
                 } else { //registration success, add user's info into database lists
-                    Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.LoginActivity");
                     UserDatabase.usernames.add(username.getText().toString());
                     UserDatabase.passwords.add(password.getText().toString());
                     UserDatabase.emails.add(email.getText().toString());
                     UserDatabase.types.add(type.getSelectedItem().toString());
                     UserDatabase.location.add(0);
-                    startActivity(intent);
+                    if (type.getSelectedItem().toString().equals("Location Employee")) {
+                        Log.d("Reg", "location employee register");
+                        Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.LocationEmployee");
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.LoginActivity");
+                        startActivity(intent);
+                    }
                 }
             }
         });
