@@ -9,7 +9,7 @@ public class LocationList {
 
     private List<Location> locations;
 
-    private LocationList() {
+    public LocationList() {
         locations = new ArrayList<>();
     }
 
@@ -27,6 +27,15 @@ public class LocationList {
             if (d.getKey() == key) return d;
         }
         Log.d("MYAPP", "Warning - Failed to find key: " + key);
+        return null;
+    }
+
+    //method to search by location name
+    public Location findLocationByName(String name) {
+        for (Location d : locations) {
+            if (d.getName().equals(name)) return d;
+        }
+        Log.d("MYAPP", "Warning - Failed to find name: " + name);
         return null;
     }
 }

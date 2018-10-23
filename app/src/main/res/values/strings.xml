@@ -57,10 +57,10 @@
     <string name="addDonation">Add A Donation</string>
     <string-array name="allLocations">
         <item>AFD Station 4</item>
-        <item>Boys &amp; Girls Club W.W. Woolfolk</item>
-        <item>Pathway Upper Room Christian Ministries</item>
-        <item>Pavilion of Hope Inc</item>
-        <item>D&amp;D Convenience Store</item>
-        <item>Keep North Fulton Beautiful</item>
+        <item>BOYS &amp; GILRS CLUB W.W. WOOLFOLK</item>
+        <item>PATHWAY UPPER ROOM CHRISTIAN MINISTRIES</item>
+        <item>PAVILION OF HOPE INC</item>
+        <item>D&amp;D CONVENIENCE STORE</item>
+        <item>KEEP NORTH FULTON BEAUTIFUL</item>
     </string-array>
 </resources>
