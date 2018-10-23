@@ -68,4 +68,5 @@
         <item>KEEP NORTH FULTON BEAUTIFUL</item>
     </string-array>
     <string name="title_activity_item_detail">ItemDetailActivity</string>
+    <string name="selectYourLoc">Select employment location</string>
 </resources>
