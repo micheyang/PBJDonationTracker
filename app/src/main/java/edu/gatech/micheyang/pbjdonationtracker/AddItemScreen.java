@@ -98,7 +98,7 @@ public class AddItemScreen extends AppCompatActivity {
                 Log.d("Location add", "Location add: " + findLocationByKey(UserDatabase.location.get(userIndex)).getName());
                 Log.d("LocationListInstance", "LocationListInstance: " + temp);
                 if (location.getSelectedItem().toString().equals(findLocationByKey(UserDatabase.location.get(userIndex)).getName())) {
-                    ItemDatabase.items.add(new Item(time.getText().toString(), location.getSelectedItem().toString(),
+                    ItemDatabase.INSTANCE.getItems().add(new Item(time.getText().toString(), location.getSelectedItem().toString(),
                             shortDescription.getText().toString(), fullDescription.getText().toString(),
                             value.getText().toString(), category.getSelectedItem().toString()));
                     startActivity(intent);
@@ -126,8 +126,8 @@ public class AddItemScreen extends AppCompatActivity {
     }
 
     private void currentItemDatabase() {
-        for (int i = 0; i < ItemDatabase.items.size(); i++) {
-            Log.d("Item", "Item: " + ItemDatabase.items.get(i));
+        for (int i = 0; i < ItemDatabase.INSTANCE.getItems().size(); i++) {
+            Log.d("Item", "Item: " + ItemDatabase.INSTANCE.getItems().get(i));
 
         }
     }

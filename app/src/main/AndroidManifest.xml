@@ -99,7 +99,6 @@
         </activity>
         <activity
             android:name=".LocationEmployee"
-
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="edu.gatech.micheyang.pbjdonationtracker.LocationEmployee" />
@@ -107,5 +106,26 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ItemDetailActivity"
+            android:label="@string/title_activity_item_detail"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="edu.gatech.micheyang.pbjdonationtracker.ItemDetailActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ListOfItems"
+            android:label="@string/title_activity_list_of_items"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="edu.gatech.micheyang.pbjdonationtracker.ListOfItems" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
+
 </manifest>

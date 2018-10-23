@@ -1,4 +1,3 @@
-/*
 package edu.gatech.micheyang.pbjdonationtracker;
 
 import android.content.Context;
@@ -18,8 +17,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import model.Location;
-import model.LocationList;
+import model.Item;
+import model.ItemDatabase;
 
 //import model item database and stuff
 
@@ -28,7 +27,7 @@ public class ListOfItems extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_of_locations);
+        setContentView(R.layout.activity_list_of_items);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //toolbar.setTitle(getTitle());
@@ -44,9 +43,9 @@ public class ListOfItems extends AppCompatActivity {
     }
 
     public class SimpleItemRecyclerViewAdapter
-            extends RecyclerView.Adapter<ListOfLocations.SimpleItemRecyclerViewAdapter.ViewHolder> {
+            extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<Location> mValues;
+        private final List<Item> mValues;
 
         public SimpleItemRecyclerViewAdapter(List<Item> items) {
             mValues = items;
@@ -60,18 +59,18 @@ public class ListOfItems extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final ListOfLocations.SimpleItemRecyclerViewAdapter.ViewHolder holder, int position) {
-            holder.location = mValues.get(position);
-            holder.mIdView.setText("" + mValues.get(position).getKey());
-            holder.mContentView.setText(mValues.get(position).getName());
+        public void onBindViewHolder(final ListOfItems.SimpleItemRecyclerViewAdapter.ViewHolder holder, int position) {
+            holder.item = mValues.get(position);
+            holder.mIdView.setText("" + mValues.get(position).getLocation());
+            holder.mContentView.setText(mValues.get(position).getShortDescription());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, LocationDetailActivity.class);
-                    Log.d("MYAPP", "Switch to detailed view for item: " + holder.location.getKey());
-                    intent.putExtra(LocationDetailFragment.ARG_ITEM_ID, holder.location.getKey());
+                    Intent intent = new Intent(context, ItemDetailActivity.class);
+                    Log.d("MYAPP", "Switch to detailed view for item: " + holder.item.getLocation());
+                    intent.putExtra(ItemDetailFragment.ARG_LOCATION_NAME, holder.item.getLocation());
 
                     context.startActivity(intent);
                 }
@@ -87,7 +86,7 @@ public class ListOfItems extends AppCompatActivity {
             public final View mView;
             public final TextView mIdView;
             public final TextView mContentView;
-            public Location location;
+            public Item item;
 
             public ViewHolder(View view) {
                 super(view);
@@ -104,4 +103,3 @@ public class ListOfItems extends AppCompatActivity {
     }
 
 }
-*/
