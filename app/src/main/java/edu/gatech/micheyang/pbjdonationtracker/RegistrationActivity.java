@@ -21,7 +21,6 @@ public class RegistrationActivity extends AppCompatActivity {
     private Button regButton; //register button
     private Button cancelButton; //cancel button
 
-
 //    DatabaseHelper userDB;
 
     @Override

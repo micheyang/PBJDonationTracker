@@ -32,6 +32,26 @@
             android:inputType="datetime" />
 
         <TextView
+            android:id="@+id/selectLocationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/enterLocation" />
+
+        <Spinner
+            android:id="@+id/selectLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:entries="@array/allLocations" />
+
+        <TextView
             android:id="@+id/itemCategoryLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -93,7 +113,8 @@
             android:layout_marginTop="5dp"
             android:ems="10"
             android:hint="Short description of item."
-            android:inputType="textShortMessage" />
+            android:inputType="textShortMessage"
+            android:singleLine="true" />
 
         <TextView
             android:id="@+id/fullDescrLabel"
@@ -115,11 +136,12 @@
             android:layout_marginTop="5dp"
             android:ems="10"
             android:hint="Detailed description of item."
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            android:singleLine="false" />
 
         <Button
             android:id="@+id/addItemButton"
-            android:layout_width="365dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginEnd="8dp"
@@ -129,7 +151,7 @@
 
         <Button
             android:id="@+id/cancelItemButton"
-            android:layout_width="365dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginEnd="8dp"
