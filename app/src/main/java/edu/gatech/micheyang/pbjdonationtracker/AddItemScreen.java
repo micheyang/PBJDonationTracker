@@ -36,7 +36,7 @@ import static edu.gatech.micheyang.pbjdonationtracker.EmployeeAppScreen.TYPE_POS
 import static edu.gatech.micheyang.pbjdonationtracker.EmployeeAppScreen.WEBSITE_POSITION;
 import static edu.gatech.micheyang.pbjdonationtracker.EmployeeAppScreen.ZIP_CODE_POSITION;
 import static edu.gatech.micheyang.pbjdonationtracker.LoginActivity.userIndex;
-
+import static model.Item.keyCounter;
 
 public class AddItemScreen extends AppCompatActivity {
 
@@ -100,7 +100,7 @@ public class AddItemScreen extends AppCompatActivity {
                 if (location.getSelectedItem().toString().equals(findLocationByKey(UserDatabase.location.get(userIndex)).getName())) {
                     ItemDatabase.INSTANCE.getItems().add(new Item(time.getText().toString(), location.getSelectedItem().toString(),
                             shortDescription.getText().toString(), fullDescription.getText().toString(),
-                            value.getText().toString(), category.getSelectedItem().toString()));
+                            value.getText().toString(), category.getSelectedItem().toString(),++keyCounter));
                     startActivity(intent);
                 } else {
                     invalid_Location.setVisibility(View.VISIBLE); //when location employee doesnt select correct location to add item to, notify

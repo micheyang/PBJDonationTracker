@@ -14,7 +14,7 @@ import model.Item;
 import model.ItemDatabase;
 
 public class ItemDetailFragment extends Fragment {
-    public static final String ARG_LOCATION_NAME = "location_name";
+    public static final String ARG_ITEM_ID = "item_id";
 
     private Item mItem;
 
@@ -25,20 +25,21 @@ public class ItemDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /*if (getArguments().containsKey(ARG_LOCATION_NAME)) {
+        Log.d("MYAPP", "arguments: " + getArguments());
+        if (getArguments().containsKey(ARG_ITEM_ID)) {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            String location_name = getArguments().getString(ARG_LOCATION_NAME);
-            Log.d("MYAPP", "Start details for: " + location_name);
-            mItem = ItemDatabase.INSTANCE.findItemsAtLocation(location_name);
+            int item_id = getArguments().getInt(ARG_ITEM_ID);
+            Log.d("MYAPP", "Start details for: " + item_id);
+            mItem = ItemDatabase.INSTANCE.findItemsByKey(item_id);
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
                 appBarLayout.setTitle(mItem.getShortDescription());
             }
-        }*/
+        }
     }
 
     @Override
@@ -50,10 +51,10 @@ public class ItemDetailFragment extends Fragment {
         if (mItem != null) {
             ((TextView) rootView.findViewById(R.id.time)).setText(getResources().getString(R.string.time, mItem.getTime()));
             ((TextView) rootView.findViewById(R.id.location)).setText(getResources().getString(R.string.place, mItem.getLocation()));
-            /*((TextView) rootView.findViewById(R.id.short_desc)).setText(getResources().getString(R.string.website, mItem.getShortDescription()));
-            ((TextView) rootView.findViewById(R.id.full_desc).setText(getResources().getString(R.string.longitude, mItem.getFullDescription()));
-            ((TextView) rootView.findViewById(R.id.value)).setText(getResources().getString(R.string.latitude, mItem.getValue()));
-            ((TextView) rootView.findViewById(R.id.category)).setText(getResources().getString(R.string.address, mItem.getCategory()));*/
+            ((TextView) rootView.findViewById(R.id.short_desc)).setText(getResources().getString(R.string.shortdesc, mItem.getShortDescription()));
+            ((TextView) rootView.findViewById(R.id.full_desc)).setText(getResources().getString(R.string.fulldesc, mItem.getFullDescription()));
+            ((TextView) rootView.findViewById(R.id.value)).setText(getResources().getString(R.string.value, mItem.getValue()));
+            ((TextView) rootView.findViewById(R.id.category)).setText(getResources().getString(R.string.category, mItem.getCategory()));
             //((TextView) rootView.findViewById(R.id.city)).setText(mItem.getCity());
             //((TextView) rootView.findViewById(R.id.state)).setText(mItem.getState());
             //((TextView) rootView.findViewById(R.id.zip_code)).setText(mItem.getZipCode());

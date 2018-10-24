@@ -15,10 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Item;
 import model.ItemDatabase;
+import model.Location;
+import model.LocationList;
+
+import static edu.gatech.micheyang.pbjdonationtracker.LoginActivity.userIndex;
 
 //import model item database and stuff
 
@@ -39,9 +44,25 @@ public class ListOfItems extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+        Log.d("myapp", "LocationInstance: " + LocationList.INSTANCE.getItems());
         recyclerView.setAdapter(new ListOfItems.SimpleItemRecyclerViewAdapter(ItemDatabase.INSTANCE.getItems()));
+//        ItemDatabase.INSTANCE.findItemsAtLocation(LocationList.INSTANCE.findLocationByKey(UserDatabase.location.get(userIndex)).getName()))
     }
-
+//    public ArrayList<Item> findItemsAtLocation(String location) {
+//        ArrayList<Item> itemsAtLoc = new ArrayList<>();
+//        for (Item d : ItemDatabase.INSTANCE.getItems()) {
+//            if (d.getLocation().equals(location)) itemsAtLoc.add(d);
+//        }
+//        Log.d("MYAPP", "Warning - Failed to find items for: " + location);
+//        return itemsAtLoc;
+//    }
+//    public Location findLocationByKey(int key) {
+//        for (Location d : LocationList.INSTANCE.getItems()) {
+//            if (d.getKey() == key) return d;
+//        }
+//        Log.d("MYAPP", "Warning - Failed to find key: " + key);
+//        return null;
+//    }
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
@@ -61,7 +82,7 @@ public class ListOfItems extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ListOfItems.SimpleItemRecyclerViewAdapter.ViewHolder holder, int position) {
             holder.item = mValues.get(position);
-            holder.mIdView.setText("" + mValues.get(position).getLocation());
+            holder.mIdView.setText("" + mValues.get(position).getKey());
             holder.mContentView.setText(mValues.get(position).getShortDescription());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +91,7 @@ public class ListOfItems extends AppCompatActivity {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, ItemDetailActivity.class);
                     Log.d("MYAPP", "Switch to detailed view for item: " + holder.item.getLocation());
-                    intent.putExtra(ItemDetailFragment.ARG_LOCATION_NAME, holder.item.getLocation());
+                    intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, holder.item.getKey());
 
                     context.startActivity(intent);
                 }

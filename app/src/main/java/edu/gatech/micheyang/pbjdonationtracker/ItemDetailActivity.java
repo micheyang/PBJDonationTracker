@@ -25,8 +25,8 @@ public class ItemDetailActivity extends AppCompatActivity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putInt(ItemDetailFragment.ARG_LOCATION_NAME,
-                    getIntent().getIntExtra(ItemDetailFragment.ARG_LOCATION_NAME, 1000));
+            arguments.putInt(ItemDetailFragment.ARG_ITEM_ID,
+                    getIntent().getIntExtra(ItemDetailFragment.ARG_ITEM_ID, 1000));
             ItemDetailFragment fragment = new ItemDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
@@ -34,6 +34,7 @@ public class ItemDetailActivity extends AppCompatActivity {
                     .commit();
         }
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

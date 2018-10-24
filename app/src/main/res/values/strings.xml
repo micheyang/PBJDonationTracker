@@ -29,6 +29,10 @@
 
     <string name="time">Time: %1$s</string>
     <string name="place">Item Location: %1$s</string>
+    <string name="shortdesc">Short Description: %1$s</string>
+    <string name="fulldesc">Full Description: %1$s</string>
+    <string name="value">Value: $ %1$s</string>
+    <string name="category">Category: %1$s</string>
 
     <string name="title_location_list">Locations</string>
     <string name="title_location_detail">Location Detail</string>

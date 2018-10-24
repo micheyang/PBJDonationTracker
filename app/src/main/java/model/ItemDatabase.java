@@ -30,7 +30,16 @@ public class ItemDatabase {
         Log.d("MYAPP", "Warning - Failed to find items for: " + location);
         return null;
     }
-
+    public Item getItem(int index) {
+        return items.get(index);
+    }
+    public Item findItemsByKey(int key) {
+        for (Item d : items) {
+            if (d.getKey() == key) return d;
+        }
+        Log.d("MYAPP", "Warning - Failed to find items for: " + key);
+        return null;
+    }
 }
 
 
