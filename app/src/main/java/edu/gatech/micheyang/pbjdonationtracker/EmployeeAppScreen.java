@@ -20,11 +20,14 @@ import java.nio.charset.StandardCharsets;
 import model.LocationList;
 import model.Location;
 
+import static edu.gatech.micheyang.pbjdonationtracker.LoginActivity.userIndex;
+
 public class EmployeeAppScreen extends AppCompatActivity {
 
     private Button locationListButton;
     private Button locationInventoryButton;
     private Button addDonationButton;
+    private String locName;
 
     /***
      * Method that creates the activity when it is launched.
@@ -67,10 +70,12 @@ public class EmployeeAppScreen extends AppCompatActivity {
 
     public void pressViewMyLocationInventory() {
         locationInventoryButton = (Button) findViewById(R.id.location_inventory_button);
+        readCSVFile();
         locationInventoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.ListOfItems");
+                intent.putExtra(ListOfItems.LOCATION, locName);
                 startActivity(intent);
             }
         });
@@ -109,6 +114,9 @@ public class EmployeeAppScreen extends AppCompatActivity {
                         details[PHONE_NUMBER_POSITION], details[WEBSITE_POSITION]));
             }
             br.close();
+            locName = model.findLocationByKey(UserDatabase.location.get(userIndex)).getName();
+            Log.d("EmpAppScreen", "locName: " + locName);
+
         } catch (IOException e) {
             //Log.e(MainActivity.TAG, "error reading assets", e);
         }

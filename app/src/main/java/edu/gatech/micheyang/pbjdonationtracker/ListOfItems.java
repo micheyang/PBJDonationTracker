@@ -28,7 +28,7 @@ import static edu.gatech.micheyang.pbjdonationtracker.LoginActivity.userIndex;
 //import model item database and stuff
 
 public class ListOfItems extends AppCompatActivity {
-
+    public static final String LOCATION = "location";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +44,12 @@ public class ListOfItems extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        Log.d("myapp", "LocationInstance: " + LocationList.INSTANCE.getItems());
-        recyclerView.setAdapter(new ListOfItems.SimpleItemRecyclerViewAdapter(ItemDatabase.INSTANCE.getItems()));
+        String locName = getIntent().getStringExtra(LOCATION);
+//        recyclerView.setAdapter(new ListOfItems.SimpleItemRecyclerViewAdapter(ItemDatabase.INSTANCE.getItems()));
+        Log.d("LocName", "" + locName);
+        recyclerView.setAdapter(new ListOfItems.SimpleItemRecyclerViewAdapter(ItemDatabase.INSTANCE.findItemsAtLocation(locName)));
 //        ItemDatabase.INSTANCE.findItemsAtLocation(LocationList.INSTANCE.findLocationByKey(UserDatabase.location.get(userIndex)).getName()))
+//        ItemDatabase.INSTANCE.findItemsAtLocation(locName)
     }
 //    public ArrayList<Item> findItemsAtLocation(String location) {
 //        ArrayList<Item> itemsAtLoc = new ArrayList<>();

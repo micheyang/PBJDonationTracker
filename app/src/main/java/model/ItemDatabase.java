@@ -23,12 +23,20 @@ public class ItemDatabase {
         items = new ArrayList<>();
     }
 
-    public Item findItemsAtLocation(String location) {
+//    public Item findItemsAtLocation(String location) {
+//        for (Item d : items) {
+//            if (d.getLocation().equals(location)) return d;
+//        }
+//        Log.d("MYAPP", "Warning - Failed to find items for: " + location);
+//        return null;
+//    }
+    public ArrayList<Item> findItemsAtLocation(String location) {
+        ArrayList<Item> itemsAtLoc = new ArrayList<>();
         for (Item d : items) {
-            if (d.getLocation().equals(location)) return d;
+            if (d.getLocation().equals(location)) itemsAtLoc.add(d);
         }
         Log.d("MYAPP", "Warning - Failed to find items for: " + location);
-        return null;
+        return itemsAtLoc;
     }
     public Item getItem(int index) {
         return items.get(index);
