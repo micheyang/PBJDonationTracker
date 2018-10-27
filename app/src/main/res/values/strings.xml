@@ -73,4 +73,10 @@
     </string-array>
     <string name="title_activity_item_detail">ItemDetailActivity</string>
     <string name="selectYourLoc">Select employment location</string>
+    <string name="title_activity_search_screen">SearchScreen</string>
+    <string name="itemSearch">Item Search</string>
+    <string name="categorySearch">Category Search</string>
+    <string name="locationSearch">Location Search</string>
+    <string name="itemSearchHint">Enter an item</string>
+    <string name="search">Search</string>
 </resources>

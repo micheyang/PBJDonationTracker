@@ -126,6 +126,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SearchScreen"
+            android:label="@string/title_activity_search_screen"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
