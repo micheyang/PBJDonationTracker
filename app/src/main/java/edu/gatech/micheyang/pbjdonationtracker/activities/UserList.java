@@ -1,5 +1,6 @@
 package edu.gatech.micheyang.pbjdonationtracker.activities;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,9 +21,9 @@ public class UserList extends AppCompatActivity {
 
     private AppCompatActivity activity = UserList.this;
     private RecyclerView recyclerView;
+    private DatabaseHelper dbhelper;
     private UserAdapter adapter;
     private List<User> list;
-    private DatabaseHelper dbhelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,15 +47,23 @@ public class UserList extends AppCompatActivity {
         dbhelper = new DatabaseHelper(activity);
         getData();
     }
-    
+
+    @SuppressLint("StaticFieldLeak")
     private void getData() {
-        AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+        new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
                 list.clear();
-                list.addAll(dbhelper.getAll)
+                list.addAll(dbhelper.userList());
+
+                return null;
             }
-        }
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                adapter.notifyDataSetChanged();
+            }
+        }.execute();
     }
     
 }

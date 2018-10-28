@@ -156,10 +156,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 user.setPassword(cursor.getString(cursor.getColumnIndex(PASSWORD_COL)));
                 String lock = (cursor.getString(cursor.getColumnIndex(LOCKED_COL)));
                 user.setLocked(lock.equals("true"));
-
+                cursor.moveToNext();
             }
         }
-
+        cursor.close();
+        db.close();
         return list;
     }
 
