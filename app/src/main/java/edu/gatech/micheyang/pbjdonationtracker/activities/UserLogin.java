@@ -62,10 +62,10 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
     }
 
     private void validate() {
-        String username = inputUsername.getText().toString();
-        String password = inputPassword.getText().toString();
+        String username = inputUsername.getText().toString().trim();
+        String password = inputPassword.getText().toString().trim();
         if (dbhelper.checkUserPass(username, password)) {
-            Intent intent = new Intent(activity, AppScreen.class);
+            Intent intent = new Intent(getApplicationContext(), AppScreen.class);
             resetFields();
             startActivity(intent);
         } else {

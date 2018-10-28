@@ -15,7 +15,7 @@ import edu.gatech.micheyang.pbjdonationtracker.db_model.User;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final int VERSION = 1;
-    private static final String DATABASE_NAME = "User.db";
+    private static final String DB_NAME = "User.db";
     private static final String USER_TABLE = "User";
 
     private static final String ID_COL = "id";
@@ -30,15 +30,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + LOCKED_COL + " TEXT" + ")";
     private String DROP_UT = "DROP TABLE IF EXISTS " + USER_TABLE;
 
-    // constructor, uses super for reference
-    public DatabaseHelper(@Nullable Context context, @Nullable String name,
-                          @Nullable SQLiteDatabase.CursorFactory factory,
-                          int version) {
-        super(context, USER_TABLE, null, VERSION);
-    }
-
     public DatabaseHelper(Context context) {
-        super(context, USER_TABLE, null, VERSION);
+        super(context, DB_NAME, null, VERSION);
     }
 
     @Override
@@ -81,11 +74,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void updateUser(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(USERNAME_COL, user.getUsername());
+        values.put(EMAIL_COL, user.getEmail());
+        values.put(PASSWORD_COL, user.getPassword());
+        String state = (user.getLocked() ? "true" : "false");
+        values.put(LOCKED_COL, state);
+        db.update(USER_TABLE, values, ID_COL + " = ?", new String[] {
+                String.valueOf(user.getId())
+        });
+        db.close();
+
+    }
+
     public boolean checkUsername(String username) {
         if (username == null) {
             return false;
         }
-
         SQLiteDatabase db = this.getReadableDatabase();
         String[] cols = { ID_COL };
         String col = USERNAME_COL + " = ?";
@@ -104,7 +111,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (email == null) {
             return false;
         }
-
         SQLiteDatabase db = this.getReadableDatabase();
         String[] cols = { ID_COL };
         String col = EMAIL_COL + " = ?";
@@ -123,10 +129,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (username == null || password == null) {
             return false;
         }
-
         SQLiteDatabase db = this.getReadableDatabase();
         String[] cols = { ID_COL };
-        String col = USERNAME_COL + " = ?" + " AND " + PASSWORD_COL;
+        String col = USERNAME_COL + " = ?" + " AND " + PASSWORD_COL + " = ?";
         String[] arg = { username, password };
 
         Cursor cursor = db.query(USER_TABLE, cols, col, arg, null,

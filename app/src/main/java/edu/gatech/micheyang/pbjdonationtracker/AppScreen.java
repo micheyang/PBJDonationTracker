@@ -97,7 +97,7 @@ public class AppScreen extends AppCompatActivity {
      */
     public void onLogOutPressed(View view) {
         Log.d("Edit", "logged out");
-        Intent intent = new Intent(AppScreen.this, MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
         //pop-up message notifying user that logout was successful
         Toast toast = Toast.makeText(getBaseContext(), "Logout successful!",
