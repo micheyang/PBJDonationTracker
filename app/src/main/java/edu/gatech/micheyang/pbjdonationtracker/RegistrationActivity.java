@@ -84,7 +84,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.LocationEmployee");
                         startActivity(intent);
                     } else {
-                        Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.LoginActivity");
+                        Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.activities.UserLogin");
                         startActivity(intent);
                     }
                 }

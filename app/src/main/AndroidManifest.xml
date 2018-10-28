@@ -11,34 +11,34 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".HomeScreen">
+        <!--<activity android:name=".HomeScreen">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--&lt;!&ndash;<category android:name="android.intent.category.LAUNCHER" />&ndash;&gt;-->
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MainActivity" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MainActivity" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
+            android:name=".activities.UserLogin"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="edu.gatech.micheyang.pbjdonationtracker.LoginActivity" />
+                <action android:name="edu.gatech.micheyang.pbjdonationtracker.activities.UserLogin" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".AppScreen"
-            android:label="@string/title_activity_app_screen"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="edu.gatech.micheyang.pbjdonationtracker.AppScreen" />
@@ -47,15 +47,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegistrationActivity"
-            android:label="@string/title_activity_registration"
+            android:name=".activities.UserRegistration"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="edu.gatech.micheyang.pbjdonationtracker.RegistrationActivity" />
+                <action android:name="edu.gatech.micheyang.pbjdonationtracker.activities.UserRegistration" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <!--<activity-->
+            <!--android:name=".RegistrationActivity"-->
+            <!--android:theme="@style/AppTheme.NoActionBar">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="edu.gatech.micheyang.pbjdonationtracker.RegistrationActivity" />-->
+
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
         <!-- <activity -->
         <!-- android:name=".LocationListActivity" -->
         <!-- android:label="@string/title_location_list" -->
@@ -128,8 +136,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.UserLogin" />
-        <activity android:name=".activities.UserList"></activity>
+        <activity android:name=".activities.UserList" />
     </application>
 
 </manifest>
