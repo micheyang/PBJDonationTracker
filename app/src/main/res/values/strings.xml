@@ -74,4 +74,7 @@
     <string name="title_activity_item_detail">ItemDetailActivity</string>
     <string name="selectYourLoc">Select employment location</string>
     <string name="emailHint">pbj@email.com</string>
+    <string name="accounts">Accounts</string>
+    <string name="user_accounts">User Accounts</string>
+    <string name="emailLabel">Email</string>
 </resources>
