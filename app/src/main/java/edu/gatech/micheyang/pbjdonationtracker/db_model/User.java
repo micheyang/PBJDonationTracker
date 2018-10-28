@@ -1,4 +1,4 @@
-package edu.gatech.micheyang.pbjdonationtracker.SQLDatabase;
+package edu.gatech.micheyang.pbjdonationtracker.db_model;
 
 public class User {
 
