@@ -77,4 +77,7 @@
     <string name="accounts">Accounts</string>
     <string name="user_accounts">User Accounts</string>
     <string name="emailLabel">Email</string>
+    <string name="user_db_label">View User Database</string>
+    <string name="exitLabel">Exit</string>
+    <string name="dbLabel">User Database</string>
 </resources>

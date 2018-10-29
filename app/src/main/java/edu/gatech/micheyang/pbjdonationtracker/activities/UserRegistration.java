@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import edu.gatech.micheyang.pbjdonationtracker.AppScreen;
 import edu.gatech.micheyang.pbjdonationtracker.MainActivity;
 import edu.gatech.micheyang.pbjdonationtracker.R;
 import edu.gatech.micheyang.pbjdonationtracker.database.DatabaseHelper;
@@ -46,7 +45,6 @@ public class UserRegistration extends AppCompatActivity implements View.OnClickL
             case R.id.regCancelButton:
                 Log.d("Edit", "cancel register");
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                resetFields();
                 startActivity(intent);
                 break;
             case R.id.regRegButton:
@@ -56,9 +54,6 @@ public class UserRegistration extends AppCompatActivity implements View.OnClickL
     }
 
     private void init() {
-        dbhelper = new DatabaseHelper(activity);
-        user = new User();
-
         username = findViewById(R.id.regNameEntry);
         password = findViewById(R.id.regPassEntry);
         email = findViewById(R.id.regEmailEntry);
@@ -69,6 +64,9 @@ public class UserRegistration extends AppCompatActivity implements View.OnClickL
         cancelButton = findViewById(R.id.regCancelButton);
         regButton.setOnClickListener(this);
         cancelButton.setOnClickListener(this);
+
+        dbhelper = new DatabaseHelper(activity);
+        user = new User();
     }
 
     private void resetFields() {
@@ -84,7 +82,7 @@ public class UserRegistration extends AppCompatActivity implements View.OnClickL
         String pass = password.getText().toString().trim();
         boolean result = validate(usernm, eml);
         if (!result) {
-            addUser(usernm, eml, pass);
+            addtoDB(usernm, eml, pass);
             Intent intent = new Intent(getApplicationContext(), UserLogin.class);
             resetFields();
             startActivity(intent);
@@ -101,7 +99,7 @@ public class UserRegistration extends AppCompatActivity implements View.OnClickL
         return (dbhelper.checkUsername(usernm) || dbhelper.checkEmail(eml));
     }
 
-    private void addUser(String usernm, String eml, String pass) {
+    private void addtoDB(String usernm, String eml, String pass) {
         if (usernm == null || eml == null || pass == null) {
             Log.d("Database", "failure: null user data");
             return;

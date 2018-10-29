@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -153,7 +152,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.query(USER_TABLE, cols, null,
                 null, null, null, orderBy);
         if (cursor.moveToFirst()) {
-            while(!cursor.isAfterLast()) {
+            do {
                 User user = new User();
                 user.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(ID_COL))));
                 user.setUsername(cursor.getString(cursor.getColumnIndex(USERNAME_COL)));
@@ -161,8 +160,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 user.setPassword(cursor.getString(cursor.getColumnIndex(PASSWORD_COL)));
                 String lock = (cursor.getString(cursor.getColumnIndex(LOCKED_COL)));
                 user.setLocked(lock.equals("true"));
-                cursor.moveToNext();
-            }
+
+                list.add(user);
+            } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();

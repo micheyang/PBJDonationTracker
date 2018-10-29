@@ -17,12 +17,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
+import edu.gatech.micheyang.pbjdonationtracker.activities.UserList;
 import model.LocationList;
 import model.Location;
 
 public class AppScreen extends AppCompatActivity {
 
     private Button locationListButton;
+    private Button viewDatabaseButton;
 
     /***
      * Method that creates the activity when it is launched.
@@ -35,7 +37,21 @@ public class AppScreen extends AppCompatActivity {
         setContentView(R.layout.activity_app_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        pressDB();
         pressViewLocations();
+        viewDB();
+    }
+
+    private void pressDB() {
+        viewDatabaseButton = findViewById(R.id.buttonDB);
+        viewDatabaseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), UserList.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void pressViewLocations() {
@@ -45,6 +61,17 @@ public class AppScreen extends AppCompatActivity {
             public void onClick(View view) {
                 readCSVFile();
                 Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.ListOfLocations");
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void viewDB() {
+        viewDatabaseButton = findViewById(R.id.buttonDB);
+        viewDatabaseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.activities.UserList");
                 startActivity(intent);
             }
         });
@@ -108,4 +135,5 @@ public class AppScreen extends AppCompatActivity {
                 PorterDuff.Mode.SRC);
         toast.show();
     }
+
 }

@@ -1,5 +1,6 @@
 package edu.gatech.micheyang.pbjdonationtracker.controllers;
 
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,7 +12,7 @@ import java.util.List;
 import edu.gatech.micheyang.pbjdonationtracker.R;
 import edu.gatech.micheyang.pbjdonationtracker.db_model.User;
 
-public class UserAdapter extends RecyclerView.Adapter<UserVH> {
+public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserVH> {
 
     private List<User> user_list;
 
@@ -29,9 +30,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserVH> {
 
     @Override
     public void onBindViewHolder(UserVH vh, int position) {
-        vh.username.setText(user_list.get(position).getUsername());
-        vh.email.setText(user_list.get(position).getEmail());
-        vh.password.setText(user_list.get(position).getPassword());
+        vh.tvUsername.setText(user_list.get(position).getUsername());
+        vh.tvEmail.setText(user_list.get(position).getEmail());
+        vh.tvPassword.setText(user_list.get(position).getPassword());
     }
 
     @Override
@@ -39,4 +40,19 @@ public class UserAdapter extends RecyclerView.Adapter<UserVH> {
         Log.v(UserAdapter.class.getSimpleName(), "" + user_list.size());
         return user_list.size();
     }
+
+    public class UserVH extends RecyclerView.ViewHolder {
+
+        public AppCompatTextView tvUsername;
+        public AppCompatTextView tvEmail;
+        public AppCompatTextView tvPassword;
+
+        public UserVH(View view) {
+            super(view);
+            tvUsername = view.findViewById(R.id.tvUsername);
+            tvEmail = view.findViewById(R.id.tvEmail);
+            tvPassword = view.findViewById(R.id.tvPassword);
+        }
+    }
+
 }

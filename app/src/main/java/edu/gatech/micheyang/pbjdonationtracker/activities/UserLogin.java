@@ -66,7 +66,6 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
         String password = inputPassword.getText().toString().trim();
         if (dbhelper.checkUserPass(username, password)) {
             Intent intent = new Intent(getApplicationContext(), AppScreen.class);
-            resetFields();
             startActivity(intent);
         } else {
             failedLogin.setVisibility(View.VISIBLE);

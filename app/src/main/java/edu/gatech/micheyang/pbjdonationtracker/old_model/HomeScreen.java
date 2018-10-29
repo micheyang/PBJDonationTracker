@@ -1,9 +1,12 @@
-package edu.gatech.micheyang.pbjdonationtracker;
+package edu.gatech.micheyang.pbjdonationtracker.old_model;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import edu.gatech.micheyang.pbjdonationtracker.MainActivity;
+import edu.gatech.micheyang.pbjdonationtracker.R;
 
 public class HomeScreen extends AppCompatActivity {
 

@@ -14,18 +14,18 @@ import java.util.List;
 public class UserDatabase {
 
     //stores all valid inputted usernames
-    static List<String> usernames = new ArrayList<>();
+    public static List<String> usernames = new ArrayList<>();
 
     //stores all valid inputted passwords
-    static List<String> passwords = new ArrayList<>();
+    public static List<String> passwords = new ArrayList<>();
 
     //stores all valid inputted email adresses
-    static List<String> emails = new ArrayList<>();
+    public static List<String> emails = new ArrayList<>();
 
     //stores all type values for user
-    static List<String> types = new ArrayList<>();
+    public static List<String> types = new ArrayList<>();
 
     //stores location employee id's 
-    static List<Integer> location = new ArrayList<>();
+    public static List<Integer> location = new ArrayList<>();
 
 }
