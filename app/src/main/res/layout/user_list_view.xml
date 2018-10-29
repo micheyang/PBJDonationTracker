@@ -77,6 +77,30 @@
                 android:layout_weight="1"
                 android:text="@string/passwordLabel"
                 android:textColor="@android:color/darker_gray" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutLock"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/small_margin1"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/locked"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvLocked"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/locked"
+                android:textColor="@android:color/darker_gray" />
         </LinearLayout>
 
     </LinearLayout>

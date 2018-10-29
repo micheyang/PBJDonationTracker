@@ -80,4 +80,6 @@
     <string name="user_db_label">View User Database</string>
     <string name="exitLabel">Exit</string>
     <string name="dbLabel">User Database</string>
+    <string name="lockedLabel">State</string>
+    <string name="locked">Locked</string>
 </resources>
