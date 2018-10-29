@@ -48,6 +48,25 @@ public class ItemDatabase {
         Log.d("MYAPP", "Warning - Failed to find items for: " + key);
         return null;
     }
+
+    public ArrayList<Item> findItemsByCategory(String category) {
+        ArrayList<Item> itemsInCat = new ArrayList<>();
+        for (Item d : items) {
+            if (d.getCategory().equals(category)) itemsInCat.add(d);
+        }
+        Log.d("MYAPP", "Warning - Failed to find items for: " + category);
+        return itemsInCat;
+    }
+
+    public ArrayList<Item> findItemsByName(String name) {
+        ArrayList<Item> itemsName = new ArrayList<>();
+        for (Item d : items) {
+            if (d.getShortDescription().equals(name)) itemsName.add(d);
+        }
+        Log.d("MYAPP", "Warning - Failed to find items for: " + name);
+        return itemsName;
+    }
+
 }
 
 
