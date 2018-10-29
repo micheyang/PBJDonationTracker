@@ -34,6 +34,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserVH> {
         vh.tvEmail.setText(user_list.get(position).getEmail());
         vh.tvPassword.setText(user_list.get(position).getPassword());
         vh.tvLocked.setText(String.valueOf(user_list.get(position).getLocked()));
+        vh.tvType.setText(String.valueOf(user_list.get(position).getType()));
     }
 
     @Override
@@ -48,6 +49,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserVH> {
         public AppCompatTextView tvEmail;
         public AppCompatTextView tvPassword;
         public AppCompatTextView tvLocked;
+        public AppCompatTextView tvType;
 
         public UserVH(View view) {
             super(view);
@@ -55,6 +57,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserVH> {
             tvEmail = view.findViewById(R.id.tvEmail);
             tvPassword = view.findViewById(R.id.tvPassword);
             tvLocked = view.findViewById(R.id.tvLocked);
+            tvType = view.findViewById(R.id.tvType);
         }
     }
 

@@ -1,4 +1,4 @@
-package edu.gatech.micheyang.pbjdonationtracker.controllers;
+package edu.gatech.micheyang.pbjdonationtracker.old_model;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

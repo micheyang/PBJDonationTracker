@@ -82,4 +82,10 @@
     <string name="dbLabel">User Database</string>
     <string name="lockedLabel">State</string>
     <string name="locked">Locked</string>
+    <string name="locnListLabel">List of Locations</string>
+    <string name="nameLabel">Name</string>
+    <string name="locationLabel">Location</string>
+    <string name="coordLabel">Coordinates</string>
+    <string name="typeLabel">Type</string>
+    <string name="acctTypeLabel">Account Type</string>
 </resources>

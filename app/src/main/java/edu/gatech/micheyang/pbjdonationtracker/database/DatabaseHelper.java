@@ -22,11 +22,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String PASSWORD_COL = "password";
     private static final String EMAIL_COL = "email";
     private static final String LOCKED_COL = "locked";
+    private static final String TYPE_COL = "type";
 
     private String CREATE_UT = "CREATE TABLE " + USER_TABLE + "("
             + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT," + USERNAME_COL
             + " TEXT," + PASSWORD_COL + " TEXT," + EMAIL_COL + " TEXT,"
-            + LOCKED_COL + " TEXT" + ")";
+            + LOCKED_COL + " TEXT," + TYPE_COL + " TEXT" + ")";
     private String DROP_UT = "DROP TABLE IF EXISTS " + USER_TABLE;
 
     public DatabaseHelper(Context context) {
@@ -60,6 +61,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(PASSWORD_COL, user.getPassword());
         String state = (user.getLocked() ? "true" : "false");
         values.put(LOCKED_COL, state);
+        int pos = User.findTypeIndex(user.getType());
+        values.put(TYPE_COL, User.types.get(pos));
         //add user info, put in table as new row
         db.insert(USER_TABLE, null, values);
         db.close();
@@ -81,6 +84,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(PASSWORD_COL, user.getPassword());
         String state = (user.getLocked() ? "true" : "false");
         values.put(LOCKED_COL, state);
+        int pos = User.findTypeIndex(user.getType());
+        values.put(TYPE_COL, User.types.get(pos));
         db.update(USER_TABLE, values, ID_COL + " = ?", new String[] {
                 String.valueOf(user.getId())
         });
@@ -146,7 +151,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         List<User> list = new ArrayList<>();
 
-        String[] cols = { ID_COL, USERNAME_COL, EMAIL_COL, PASSWORD_COL, LOCKED_COL };
+        String[] cols = { ID_COL, USERNAME_COL, EMAIL_COL, PASSWORD_COL, LOCKED_COL, TYPE_COL };
         String orderBy = USERNAME_COL + " ASC";
 
         Cursor cursor = db.query(USER_TABLE, cols, null,
@@ -160,6 +165,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 user.setPassword(cursor.getString(cursor.getColumnIndex(PASSWORD_COL)));
                 String lock = (cursor.getString(cursor.getColumnIndex(LOCKED_COL)));
                 user.setLocked(lock.equals("true"));
+                user.setType(cursor.getString(cursor.getColumnIndex(TYPE_COL)));
 
                 list.add(user);
             } while (cursor.moveToNext());
