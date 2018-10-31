@@ -25,6 +25,7 @@ public class AppScreen extends AppCompatActivity {
 
     private Button locationListButton;
     private Button viewDatabaseButton;
+    private Button searchButton;
 
     /***
      * Method that creates the activity when it is launched.
@@ -38,9 +39,21 @@ public class AppScreen extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        pressSearch();
         pressDB();
         pressViewLocations();
         viewDB();
+    }
+
+    private void pressSearch() {
+        searchButton = findViewById(R.id.genSearchButton);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.SearchScreen");
+                startActivity(intent);
+            }
+        });
     }
 
     private void pressDB() {

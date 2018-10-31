@@ -27,6 +27,7 @@ public class EmployeeAppScreen extends AppCompatActivity {
     private Button locationListButton;
     private Button locationInventoryButton;
     private Button addDonationButton;
+    private Button searchButton;
     private String locName;
 
     /***
@@ -40,9 +41,21 @@ public class EmployeeAppScreen extends AppCompatActivity {
         setContentView(R.layout.activity_employee_app_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        pressSearch();
         pressAddDonation();
         pressViewLocations();
         pressViewMyLocationInventory();
+    }
+
+    public void pressSearch() {
+        searchButton = (Button) findViewById(R.id.empSearchButton);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.SearchScreen");
+                startActivity(intent);
+            }
+        });
     }
 
     public void pressAddDonation() {
