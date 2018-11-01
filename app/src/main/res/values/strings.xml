@@ -88,4 +88,10 @@
     <string name="coordLabel">Coordinates</string>
     <string name="typeLabel">Type</string>
     <string name="acctTypeLabel">Account Type</string>
+    <string name="title_activity_search_screen">SearchScreen</string>
+    <string name="searchForItem">Search for locations with this item</string>
+    <string name="searchForCat">Search for locations with this category</string>
+    <string name="searchForLoc">Search for locations near this location</string>
+    <string name="enterItemSearch">Enter an item</string>
+    <string name="searchButton">Search</string>
 </resources>
