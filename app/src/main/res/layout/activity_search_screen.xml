@@ -4,14 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AppScreen">
+    tools:context=".SearchScreen">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        app:layout_anchorGravity="top|center">
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -22,24 +20,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/content_app_screen" />
-
-    <Button
-        android:id="@+id/genSearchButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/searchButton"
-        app:layout_anchor="@id/include"
-        app:layout_anchorGravity="center_vertical" />
-
-    <Button
-        android:id="@+id/location_list_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/viewLocationList"
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="bottom|center" />
+    <include layout="@layout/content_search_screen" />
 
 </android.support.design.widget.CoordinatorLayout>
