@@ -111,6 +111,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return (count > 0);
     }
 
+    public String getUserType(String username) {
+        if (username == null) {
+            return null;
+        } else if (!checkUsername(username)) {
+            return null;
+        }
+        List<User> list = userList();
+        for (User u : list) {
+            if (u.getUsername().equals(username)) {
+                return u.getType();
+            }
+        }
+        return null;
+    }
+
     public boolean checkEmail(String email) {
         if (email == null) {
             return false;

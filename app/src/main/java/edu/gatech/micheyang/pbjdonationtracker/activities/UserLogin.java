@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import edu.gatech.micheyang.pbjdonationtracker.AppScreen;
+import edu.gatech.micheyang.pbjdonationtracker.EmployeeAppScreen;
+import edu.gatech.micheyang.pbjdonationtracker.LocationEmployee;
 import edu.gatech.micheyang.pbjdonationtracker.MainActivity;
 import edu.gatech.micheyang.pbjdonationtracker.R;
 import edu.gatech.micheyang.pbjdonationtracker.database.DatabaseHelper;
@@ -65,8 +67,22 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
         String username = inputUsername.getText().toString().trim();
         String password = inputPassword.getText().toString().trim();
         if (dbhelper.checkUserPass(username, password)) {
-            Intent intent = new Intent(getApplicationContext(), AppScreen.class);
-            startActivity(intent);
+            if (dbhelper.getUserType(username) != null
+                    && dbhelper.getUserType(username).equals("EMPLOYEE")) {
+                Intent intent = new Intent(getApplicationContext(), EmployeeAppScreen.class);
+                startActivity(intent);
+            } else if (dbhelper.getUserType(username) != null
+                    && dbhelper.getUserType(username).equals("MANAGER")) {
+                Intent intent = new Intent(getApplicationContext(), EmployeeAppScreen.class);
+                startActivity(intent);
+            } else if (dbhelper.getUserType(username) != null
+                    && dbhelper.getUserType(username).equals("ADMIN")) {
+                Intent intent = new Intent(getApplicationContext(), EmployeeAppScreen.class);
+                startActivity(intent);
+            } else {
+                Intent intent2 = new Intent(getApplicationContext(), AppScreen.class);
+                startActivity(intent2);
+            }
         } else {
             failedLogin.setVisibility(View.VISIBLE);
         }
