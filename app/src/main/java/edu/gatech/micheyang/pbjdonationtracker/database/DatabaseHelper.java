@@ -90,7 +90,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String.valueOf(user.getId())
         });
         db.close();
-
     }
 
     public boolean checkUsername(String username) {

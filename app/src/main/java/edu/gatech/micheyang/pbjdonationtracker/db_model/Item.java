@@ -2,6 +2,7 @@
 package edu.gatech.micheyang.pbjdonationtracker.db_model;
 
 public class Item {
+    private int id;
     private String time;
     private String location;
     private String shortDescription;
@@ -12,19 +13,19 @@ public class Item {
     public static int keyCounter;
     private int key;
 
-    public Item() {
-        this("Time", "Location", "Short Description", "fullDescription", "0", "category",1);
-    }
+//    public Item() {
+//        this("Time", "Location", "Short Description", "fullDescription", "0", "category",1);
+//    }
 
-    public Item(String time, String location, String shortDescription, String fullDescription, String value, String category, int keyCounter) {
-        this.time = time;
-        this.location = location;
-        this.shortDescription = shortDescription;
-        this.fullDescription = fullDescription;
-        this.value = value;
-        this.category = category;
-        this.key = keyCounter;
-    }
+//    public Item(String time, String location, String shortDescription, String fullDescription, String value, String category, int keyCounter) {
+//        this.time = time;
+//        this.location = location;
+//        this.shortDescription = shortDescription;
+//        this.fullDescription = fullDescription;
+//        this.value = value;
+//        this.category = category;
+//        this.key = keyCounter;
+//    }
 
     public String getTime() { return time; }
     public void setTime(String time) { this.time = time; }
