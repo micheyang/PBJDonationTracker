@@ -94,4 +94,9 @@
     <string name="searchForLoc">Search for locations near this location</string>
     <string name="enterItemSearch">Enter an item</string>
     <string name="searchButton">Search</string>
+    <string name="greeting1">Welcome back!</string>
+    <string name="main_menu_label">Main Menu</string>
+    <string name="search_item">Search For Item</string>
+    <string name="searchButton_text">Help me find an item:</string>
+    <string name="view_loc_label">View list of all store locations:</string>
 </resources>

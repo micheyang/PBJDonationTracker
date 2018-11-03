@@ -167,7 +167,17 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.EmployeeAppScreen"></activity>
+        <activity android:name=".activities.EmployeeAppScreen" />
+        <activity
+            android:name=".activities.UserAppScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <action android:name="edu.gatech.micheyang.pbjdonationtracker.activities.UserAppScreen" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>

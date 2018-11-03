@@ -10,4 +10,8 @@
     <dimen name="small_margin1">5dp</dimen>
     <dimen name="dim_125">125dp</dimen>
     <dimen name="dim_150">150dp</dimen>
+    <dimen name="dim_250">250dp</dimen>
+    <dimen name="dim_275">275dp</dimen>
+    <dimen name="dim_300">300dp</dimen>
+    <dimen name="dim_175">175dp</dimen>
 </resources>
