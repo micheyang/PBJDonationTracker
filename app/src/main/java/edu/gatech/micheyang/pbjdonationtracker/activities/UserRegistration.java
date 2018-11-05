@@ -3,6 +3,8 @@ package edu.gatech.micheyang.pbjdonationtracker.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import edu.gatech.micheyang.pbjdonationtracker.LocationEmployee;
 import edu.gatech.micheyang.pbjdonationtracker.MainActivity;
 import edu.gatech.micheyang.pbjdonationtracker.R;
 import edu.gatech.micheyang.pbjdonationtracker.database.DatabaseHelper;
@@ -84,7 +88,6 @@ public class UserRegistration extends AppCompatActivity implements View.OnClickL
     }
 
 
-
     private void objects() {
         dbhelper = new DatabaseHelper(activity);
         user = new User();
@@ -100,35 +103,55 @@ public class UserRegistration extends AppCompatActivity implements View.OnClickL
 
         boolean result = validate(usernm, eml);
         if (!result) {
-            addtoDB(usernm, eml, pass, type);
-            Intent intent = new Intent(getApplicationContext(), UserLogin.class);
-            resetFields();
-            startActivity(intent);
+            user = addtoDB(usernm, eml, pass, type);
+            if (user == null) {
+                invalid_attempt.setVisibility(View.VISIBLE);
+            } else {
 
-        } else {
-            invalid_attempt.setVisibility(View.VISIBLE);
+                if (!user.getType().equals("EMPLOYEE")) {
+                    Intent intent = new Intent(getApplicationContext(), UserLogin.class);
+                    intent.putExtra("newLocEmpReg", user);
+                    startActivity(intent);
+
+                    Toast toast = Toast.makeText(getBaseContext(), "Registration successful!",
+                            Toast.LENGTH_SHORT);
+                    View toastView = toast.getView();
+                    //setting the color of notification's background bubble
+                    toastView.getBackground().setColorFilter(Color.parseColor("#daeff1"),
+                            PorterDuff.Mode.SRC);
+                    toast.show();
+
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), EmployeeSelectScreen.class);
+                    intent.putExtra("newLocEmpReg", user);
+                    startActivity(intent);
+                }
+            }
         }
+        invalid_attempt.setVisibility(View.VISIBLE);
     }
 
     private boolean validate(String usernm, String eml) {
         if (usernm == null || eml == null) {
-            return false;
+            return true;
         }
         return (dbhelper.checkUsername(usernm) || dbhelper.checkEmail(eml));
     }
 
-    private void addtoDB(String usernm, String eml, String pass, String acctType) {
+    private User addtoDB(String usernm, String eml, String pass, String acctType) {
         if (usernm == null || eml == null || pass == null) {
             Log.d("Database", "failure: null user data");
-            return;
+            return null;
         }
         user.setUsername(usernm);
         user.setEmail(eml);
         user.setPassword(pass);
         user.setLocked(false);
         user.setType(User.types.get(User.findTypeIndex(acctType)));
+        user.setEmpId(-1);
         dbhelper.addUser(user);
         Log.d("Database", "success: added user");
+        return user;
     }
 
     private void resetFields() {

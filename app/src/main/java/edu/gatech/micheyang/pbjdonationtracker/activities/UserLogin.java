@@ -69,15 +69,15 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
         if (dbhelper.checkUserPass(username, password)) {
             if (dbhelper.getUserType(username) != null
                     && dbhelper.getUserType(username).equals("EMPLOYEE")) {
-                Intent intent = new Intent(getApplicationContext(), EmployeeAppScreen.class);
+                Intent intent = new Intent(getApplicationContext(), AppScreen.class);
                 startActivity(intent);
             } else if (dbhelper.getUserType(username) != null
                     && dbhelper.getUserType(username).equals("MANAGER")) {
-                Intent intent = new Intent(getApplicationContext(), EmployeeAppScreen.class);
+                Intent intent = new Intent(getApplicationContext(), AppScreen.class);
                 startActivity(intent);
             } else if (dbhelper.getUserType(username) != null
                     && dbhelper.getUserType(username).equals("ADMIN")) {
-                Intent intent = new Intent(getApplicationContext(), EmployeeAppScreen.class);
+                Intent intent = new Intent(getApplicationContext(), AppScreen.class);
                 startActivity(intent);
             } else {
                 Intent intent2 = new Intent(getApplicationContext(), AppScreen.class);

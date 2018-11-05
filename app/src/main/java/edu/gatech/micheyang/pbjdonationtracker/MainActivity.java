@@ -1,5 +1,6 @@
 package edu.gatech.micheyang.pbjdonationtracker;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,12 +28,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         init();
     }
 
     private void init() {
         dbhelper = new DatabaseHelper(activity);
-
         logButton = findViewById(R.id.login);
         regButton = findViewById(R.id.register);
         logButton.setOnClickListener(this);

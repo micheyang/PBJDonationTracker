@@ -73,7 +73,7 @@ public class AppScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 readCSVFile();
-                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.ListOfLocations");
+                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.activities.LocationList");
                 startActivity(intent);
             }
         });
@@ -102,30 +102,30 @@ public class AppScreen extends AppCompatActivity {
     public static final int WEBSITE_POSITION = 10;
 
     private void readCSVFile() {
-        LocationList model = LocationList.INSTANCE;
-
-        try {
-            //Open a stream on the raw file
-            InputStream is = getResources().openRawResource(R.raw.locationdata);
-            //From here we probably should call a model method and pass the InputStream
-            //Wrap it in a BufferedReader so that we get the readLine() method
-            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
-
-            String line;
-            br.readLine(); //get rid of header line
-            while ((line = br.readLine()) != null) {
-                //Log.d(MainActivity.TAG, line);
-                String[] details = line.split(",");
-                int key = Integer.parseInt(details[0]);
-                model.addLocation(new Location(key, details[NAME_POSITION], details[LATITUDE_POSITION],
-                        details[LONGITUDE_POSITION], details[STREET_ADDRESS_POSITION], details[CITY_POSITION],
-                        details[STATE_POSITION], details[ZIP_CODE_POSITION], details[TYPE_POSITION],
-                        details[PHONE_NUMBER_POSITION], details[WEBSITE_POSITION]));
-            }
-            br.close();
-        } catch (IOException e) {
-            //Log.e(MainActivity.TAG, "error reading assets", e);
-        }
+////        LocationList model = LocationList.INSTANCE;
+//
+//        try {
+//            //Open a stream on the raw file
+//            InputStream is = getResources().openRawResource(R.raw.locationdata);
+//            //From here we probably should call a model method and pass the InputStream
+//            //Wrap it in a BufferedReader so that we get the readLine() method
+//            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+//
+//            String line;
+//            br.readLine(); //get rid of header line
+//            while ((line = br.readLine()) != null) {
+//                //Log.d(MainActivity.TAG, line);
+//                String[] details = line.split(",");
+//                int key = Integer.parseInt(details[0]);
+//                model.addLocation(new Location(key, details[NAME_POSITION], details[LATITUDE_POSITION],
+//                        details[LONGITUDE_POSITION], details[STREET_ADDRESS_POSITION], details[CITY_POSITION],
+//                        details[STATE_POSITION], details[ZIP_CODE_POSITION], details[TYPE_POSITION],
+//                        details[PHONE_NUMBER_POSITION], details[WEBSITE_POSITION]));
+//            }
+//            br.close();
+//        } catch (IOException e) {
+//            //Log.e(MainActivity.TAG, "error reading assets", e);
+//        }
     }
 
     /***

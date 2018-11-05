@@ -3,6 +3,8 @@ package edu.gatech.micheyang.pbjdonationtracker.db_model;
 import android.content.res.Resources;
 import android.content.Context;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +13,7 @@ import java.util.Map;
 import edu.gatech.micheyang.pbjdonationtracker.R;
 import edu.gatech.micheyang.pbjdonationtracker.activities.UserRegistration;
 
-public class User {
+public class User implements Serializable {
 
     private int id;
     private String username;
@@ -19,14 +21,14 @@ public class User {
     private String email;
     private boolean locked = false;
     private String type = types.get(0);
+    private int empId = -1;
 
     private Context context;
+    public static List<String> types = Arrays.asList("USER", "EMPLOYEE", "MANAGER", "ADMIN");
 
     /**
      * GETTERS AND SETTERS FOR EACH ATTRIBUTE
      */
-    public static List<String> types = Arrays.asList("USER", "EMPLOYEE", "MANAGER", "ADMIN");
-
     public int getId() {
         return id;
     }
@@ -76,6 +78,23 @@ public class User {
             this.type = type;
         }
     }
+
+    public int getEmpId() { return empId; }
+
+    public void setEmpId(int empId) { this.empId = empId; }
+
+//    public List<User> getLocEmployees(int locKey, List<User> users) {
+//        List<User> emps = new ArrayList<>();
+//        for (User u : users) {
+//            if (u.getType().equals("EMPLOYEE")) {
+//                if (u.getEmpId() == locKey) {
+//                    emps.add(u);
+//                }
+//            }
+//
+//        }
+//        return emps;
+//    }
 
     public static int findTypeIndex(String str) {
         int i = 0;

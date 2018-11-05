@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.gatech.micheyang.pbjdonationtracker.db_model.Location;
 import edu.gatech.micheyang.pbjdonationtracker.db_model.User;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -23,11 +24,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String EMAIL_COL = "email";
     private static final String LOCKED_COL = "locked";
     private static final String TYPE_COL = "type";
+    private static final String LOC_COL = "locId";
 
     private String CREATE_UT = "CREATE TABLE " + USER_TABLE + "("
             + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT," + USERNAME_COL
             + " TEXT," + PASSWORD_COL + " TEXT," + EMAIL_COL + " TEXT,"
-            + LOCKED_COL + " TEXT," + TYPE_COL + " TEXT" + ")";
+            + LOCKED_COL + " TEXT," + TYPE_COL + " TEXT," + LOC_COL + " INTEGER" + ")";
+
     private String DROP_UT = "DROP TABLE IF EXISTS " + USER_TABLE;
 
     public DatabaseHelper(Context context) {
@@ -63,6 +66,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(LOCKED_COL, state);
         int pos = User.findTypeIndex(user.getType());
         values.put(TYPE_COL, User.types.get(pos));
+        values.put(LOC_COL, user.getEmpId());
         //add user info, put in table as new row
         db.insert(USER_TABLE, null, values);
         db.close();
@@ -86,6 +90,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(LOCKED_COL, state);
         int pos = User.findTypeIndex(user.getType());
         values.put(TYPE_COL, User.types.get(pos));
+        values.put(LOC_COL, user.getEmpId());
         db.update(USER_TABLE, values, ID_COL + " = ?", new String[] {
                 String.valueOf(user.getId())
         });
@@ -162,11 +167,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return (count > 0);
     }
 
+    public boolean checkEmployee(String username, Location loc) {
+        if (username == null || loc == null) {
+            return false;
+        } else if (!checkUsername(username)) {
+            return false;
+        }
+        List<User> uList = userList();
+        for (User u : uList) {
+            if (u.getUsername().equals(username)) {
+                if (u.getType().equals("EMPLOYEE")) {
+                    return (loc.getKey() == u.getEmpId());
+                }
+            }
+        }
+        return false;
+    }
+
     public List<User> userList() {
         SQLiteDatabase db = this.getReadableDatabase();
         List<User> list = new ArrayList<>();
 
-        String[] cols = { ID_COL, USERNAME_COL, EMAIL_COL, PASSWORD_COL, LOCKED_COL, TYPE_COL };
+        String[] cols = { ID_COL, USERNAME_COL, EMAIL_COL, PASSWORD_COL, LOCKED_COL, TYPE_COL, LOC_COL };
         String orderBy = USERNAME_COL + " ASC";
 
         Cursor cursor = db.query(USER_TABLE, cols, null,
@@ -181,6 +203,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String lock = (cursor.getString(cursor.getColumnIndex(LOCKED_COL)));
                 user.setLocked(lock.equals("true"));
                 user.setType(cursor.getString(cursor.getColumnIndex(TYPE_COL)));
+                user.setEmpId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(LOC_COL))));
 
                 list.add(user);
             } while (cursor.moveToNext());
@@ -189,5 +212,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return list;
     }
+
+    /**
+     * Gets either a list of all location employees when indicator argument is not
+     * equal to 1, or the list of location employees working at the location with key
+     * equal to lockKey (when indicator == 1).
+     *
+     * @param locKey the key of a location, if returning its employees only
+     * @param indicator determines which list to return
+     * @return a list of either all current location employees in database, or
+     * if the indicator == 1, then the list will contain only the employees of the
+     * location with key == locKey
+     */
+    public List<User> getEmpList(int locKey, int indicator) {
+        List<User> list = userList();
+        List<User> emp_list = new ArrayList<>();
+        List<User> all_list = new ArrayList<>();
+        for (User u : list) {
+            if (u.getType().equals("EMPLOYEE")) {
+                if (indicator == 1 && u.getEmpId() == locKey) {
+                    emp_list.add(u);
+                } else {
+                    all_list.add(u);
+                }
+            }
+        }
+        if (indicator == 1) {
+            return emp_list;
+        } else {
+            return all_list;
+        }
+    }
+
+
 
 }

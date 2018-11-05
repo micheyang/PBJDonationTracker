@@ -47,8 +47,8 @@ public class LocationEmployee extends AppCompatActivity {
     }
 
     public void select() {
-        type = (Spinner) findViewById(R.id.employeeSelectLocSpinner);
-        select = (Button) findViewById(R.id.select);
+        type = findViewById(R.id.employeeSelectLocSpinner);
+        select = findViewById(R.id.select);
 
         select.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -94,4 +94,6 @@
     <string name="searchForLoc">Search for locations near this location</string>
     <string name="enterItemSearch">Enter an item</string>
     <string name="searchButton">Search</string>
+    <string name="selectLocnLabel">Please select location of employment:</string>
+    <string name="selLabel">Select</string>
 </resources>
