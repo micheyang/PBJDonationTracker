@@ -49,21 +49,39 @@ public class ItemDatabase {
         return null;
     }
 
-    public ArrayList<Item> findItemsByCategory(String category) {
+    public ArrayList<Item> findItemsByCategory(String category, String location) {
         ArrayList<Item> itemsInCat = new ArrayList<>();
-        for (Item d : items) {
-            if (d.getCategory().equals(category)) itemsInCat.add(d);
+        if (location.equals("All locations")) {
+            for (Item d : items) {
+                if (d.getCategory().equals(category)) itemsInCat.add(d);
+            }
+            Log.d("MYAPP", "Warning - Failed to find items for: " + category
+            + " at all locations");
+        } else {
+            ArrayList<Item> itemsAtLoc = findItemsAtLocation(location);
+            for (Item d: itemsAtLoc) {
+                if (d.getCategory().equals(category)) itemsInCat.add(d);
+            }
+            Log.d("MYAPP", "Warning - Failed to find items for: " + category);
         }
-        Log.d("MYAPP", "Warning - Failed to find items for: " + category);
         return itemsInCat;
     }
 
-    public ArrayList<Item> findItemsByName(String name) {
+    public ArrayList<Item> findItemsByName(String name, String location) {
         ArrayList<Item> itemsName = new ArrayList<>();
-        for (Item d : items) {
-            if (d.getShortDescription().equals(name)) itemsName.add(d);
+        if (location.equals("All locations")) {
+            for (Item d : items) {
+                if (d.getShortDescription().contains(name)) itemsName.add(d);
+            }
+            Log.d("MYAPP", "Warning - Failed to find items for: " + name
+                    + " at all locations");
+        } else {
+            ArrayList<Item> itemsAtLoc = findItemsAtLocation(location);
+            for (Item d: itemsAtLoc) {
+                if (d.getShortDescription().contains(name)) itemsName.add(d);
+            }
+            Log.d("MYAPP", "Warning - Failed to find items for: " + name);
         }
-        Log.d("MYAPP", "Warning - Failed to find items for: " + name);
         return itemsName;
     }
 

@@ -71,6 +71,15 @@
         <item>D&amp;D CONVENIENCE STORE</item>
         <item>KEEP NORTH FULTON BEAUTIFUL</item>
     </string-array>
+    <string-array name="everyLocation">
+        <item>All locations</item>
+        <item>AFD Station 4</item>
+        <item>BOYS &amp; GILRS CLUB W.W. WOOLFOLK</item>
+        <item>PATHWAY UPPER ROOM CHRISTIAN MINISTRIES</item>
+        <item>PAVILION OF HOPE INC</item>
+        <item>D&amp;D CONVENIENCE STORE</item>
+        <item>KEEP NORTH FULTON BEAUTIFUL</item>
+    </string-array>
     <string name="title_activity_item_detail">ItemDetailActivity</string>
     <string name="selectYourLoc">Select employment location</string>
     <string name="emailHint">pbj@email.com</string>
@@ -89,9 +98,12 @@
     <string name="typeLabel">Type</string>
     <string name="acctTypeLabel">Account Type</string>
     <string name="title_activity_search_screen">SearchScreen</string>
-    <string name="searchForItem">Search for locations with this item</string>
-    <string name="searchForCat">Search for locations with this category</string>
-    <string name="searchForLoc">Search for locations near this location</string>
+    <string name="searchForItem">Search for this item</string>
+    <string name="searchForCat">Search for items in this category</string>
+    <string name="searchForLoc"></string>
     <string name="enterItemSearch">Enter an item</string>
     <string name="searchButton">Search</string>
+    <string name="title_activity_items_in_category">ItemsInCategory</string>
+    <string name="title_activity_items_by_name">ItemsByName</string>
+    <string name="title_activity_snack">Snack</string>
 </resources>

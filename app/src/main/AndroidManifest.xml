@@ -167,6 +167,26 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ItemsInCategory"
+            android:label="@string/title_activity_items_in_category"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="edu.gatech.micheyang.pbjdonationtracker.ItemsInCategory" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ItemsByName"
+            android:label="@string/title_activity_items_by_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="edu.gatech.micheyang.pbjdonationtracker.ItemsByName" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

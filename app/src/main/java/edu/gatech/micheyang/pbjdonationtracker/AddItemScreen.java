@@ -84,27 +84,27 @@ public class AddItemScreen extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.EmployeeAppScreen"); //change to item list screen
+                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.AppScreen"); //change to item list screen
 //                ItemDatabase.times.add(time.getText().toString());
 //                ItemDatabase.locations.add(null);  //need to change this
 //                ItemDatabase.sDesriptions.add(shortDescription.getText().toString());
 //                ItemDatabase.fDescriptions.add(fullDescription.getText().toString());
 //                ItemDatabase.values.add(value.getText().toString());
 //                ItemDatabase.categories.add(category.getSelectedItem().toString());
-                readCSVFile();
+                //readCSVFile();
 
                 Log.d("Location name", "Location selected:" + location.getSelectedItem().toString());
 //                Log.d("LocationListInstance", "LocationListInstance: " + temp.getItems());
-                Log.d("Location add", "Location add: " + findLocationByKey(UserDatabase.location.get(userIndex)).getName());
+                //Log.d("Location add", "Location add: " + findLocationByKey(UserDatabase.location.get(userIndex)).getName());
                 Log.d("LocationListInstance", "LocationListInstance: " + temp);
-                if (location.getSelectedItem().toString().equals(findLocationByKey(UserDatabase.location.get(userIndex)).getName())) {
+                //if (location.getSelectedItem().toString().equals(findLocationByKey(UserDatabase.location.get(userIndex)).getName())) {
                     ItemDatabase.INSTANCE.getItems().add(new Item(time.getText().toString(), location.getSelectedItem().toString(),
                             shortDescription.getText().toString(), fullDescription.getText().toString(),
                             value.getText().toString(), category.getSelectedItem().toString(),++keyCounter));
                     startActivity(intent);
-                } else {
-                    invalid_Location.setVisibility(View.VISIBLE); //when location employee doesnt select correct location to add item to, notify
-                }
+                //} else {
+                //    invalid_Location.setVisibility(View.VISIBLE); //when location employee doesnt select correct location to add item to, notify
+                //}
 
                 currentItemDatabase();
 
@@ -119,7 +119,7 @@ public class AddItemScreen extends AppCompatActivity {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.EmployeeAppScreen");
+                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.AppScreen");
                 startActivity(intent);
             }
         });

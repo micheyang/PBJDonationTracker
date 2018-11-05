@@ -26,6 +26,8 @@ public class AppScreen extends AppCompatActivity {
     private Button locationListButton;
     private Button viewDatabaseButton;
     private Button searchButton;
+    private Button addDonationButton;
+    private Button locationInventoryButton;
 
     /***
      * Method that creates the activity when it is launched.
@@ -43,6 +45,8 @@ public class AppScreen extends AppCompatActivity {
         pressDB();
         pressViewLocations();
         viewDB();
+        pressAddDonation();
+        pressViewMyLocationInventory();
     }
 
     private void pressSearch() {
@@ -85,6 +89,30 @@ public class AppScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.activities.UserList");
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void pressAddDonation() {
+        addDonationButton = (Button) findViewById(R.id.add_donation_button);
+        addDonationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.AddItemScreen");
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void pressViewMyLocationInventory() {
+        locationInventoryButton = (Button) findViewById(R.id.location_inventory_button);
+        //readCSVFile();
+        locationInventoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.ListOfItems");
+                //intent.putExtra(ListOfItems.LOCATION, locName);
                 startActivity(intent);
             }
         });

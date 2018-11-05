@@ -11,12 +11,13 @@ import android.content.Intent;
 
 public class SearchScreen extends AppCompatActivity {
 
-//    private EditText item;            // item input
-//    private Spinner category;         // category spinner
-//    private Spinner location;         // location spinner
+    private EditText item;            // item input
+    private Spinner category;         // category spinner
+    private Spinner location;         // location spinner
     private Button searchForItem;     // item search button
     private Button searchForCat;      // category search button
-    private Button searchForLoc;      // location search button
+    //private Button searchForLoc;      // location search button
+    //private String catName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,32 +28,46 @@ public class SearchScreen extends AppCompatActivity {
 
         pressSearchItem();
         pressSearchCat();
-        pressSearchLoc();
+        //pressSearchLoc();
     }
 
     public void pressSearchItem() {
+        location = (Spinner) findViewById(R.id.locSearchSpinner);
+        item = (EditText) findViewById(R.id.enterSearchItem);
         searchForItem = (Button) findViewById(R.id.itemSearchButton);
+
         searchForItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.ListOfLocations");
+                String itemName = item.getText().toString();
+                String locName = location.getSelectedItem().toString();
+                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.ItemsByName");
+                intent.putExtra(ItemsByName.NAME, itemName);
+                intent.putExtra(ItemsByName.LOCATION, locName);
                 startActivity(intent);
             }
         });
     }
 
     public void pressSearchCat() {
+        location = (Spinner) findViewById(R.id.locSearchSpinner);
+        category = (Spinner) findViewById(R.id.catSearchSpinner);
         searchForCat = (Button) findViewById(R.id.catSearchButton);
+
         searchForCat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.ListOfLocations");
+                String catName = category.getSelectedItem().toString();
+                String locName = location.getSelectedItem().toString();
+                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.ItemsInCategory");
+                intent.putExtra(ItemsInCategory.CATEGORY, catName);
+                intent.putExtra(ItemsInCategory.LOCATION, locName);
                 startActivity(intent);
             }
         });
     }
 
-    public void pressSearchLoc() {
+/*    public void pressSearchLoc() {
         searchForLoc = (Button) findViewById(R.id.locSearchButton);
         searchForLoc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,5 +76,5 @@ public class SearchScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
+    }*/
 }

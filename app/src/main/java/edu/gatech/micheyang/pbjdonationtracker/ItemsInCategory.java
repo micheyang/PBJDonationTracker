@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -15,58 +13,48 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import model.Item;
 import model.ItemDatabase;
-import model.Location;
-import model.LocationList;
 
-import static edu.gatech.micheyang.pbjdonationtracker.LoginActivity.userIndex;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 
-//import model item database and stuff
+public class ItemsInCategory extends AppCompatActivity {
 
-public class ListOfItems extends AppCompatActivity {
+    public static final String CATEGORY = "category";
     public static final String LOCATION = "location";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_of_items);
+        setContentView(R.layout.activity_items_in_category);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //toolbar.setTitle(getTitle());
+
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "No search results found", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });*/
 
         View recyclerView = findViewById(R.id.dataitem_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
-
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        //String locName = getIntent().getStringExtra(LOCATION);
-        String locName = "AFD Station 4";
-//        recyclerView.setAdapter(new ListOfItems.SimpleItemRecyclerViewAdapter(ItemDatabase.INSTANCE.getItems()));
-        Log.d("LocName", "" + locName);
-        recyclerView.setAdapter(new ListOfItems.SimpleItemRecyclerViewAdapter(ItemDatabase.INSTANCE.findItemsAtLocation(locName)));
-//        ItemDatabase.INSTANCE.findItemsAtLocation(LocationList.INSTANCE.findLocationByKey(UserDatabase.location.get(userIndex)).getName()))
-//        ItemDatabase.INSTANCE.findItemsAtLocation(locName)
+        String catName = getIntent().getStringExtra(CATEGORY);
+        Log.d("catName", "" + catName);
+        String locName = getIntent().getStringExtra(LOCATION);
+        Log.d("locName", "" + locName);
+        recyclerView.setAdapter(new ItemsInCategory.SimpleItemRecyclerViewAdapter(ItemDatabase.INSTANCE.findItemsByCategory(catName, locName)));
     }
-//    public ArrayList<Item> findItemsAtLocation(String location) {
-//        ArrayList<Item> itemsAtLoc = new ArrayList<>();
-//        for (Item d : ItemDatabase.INSTANCE.getItems()) {
-//            if (d.getLocation().equals(location)) itemsAtLoc.add(d);
-//        }
-//        Log.d("MYAPP", "Warning - Failed to find items for: " + location);
-//        return itemsAtLoc;
-//    }
-//    public Location findLocationByKey(int key) {
-//        for (Location d : LocationList.INSTANCE.getItems()) {
-//            if (d.getKey() == key) return d;
-//        }
-//        Log.d("MYAPP", "Warning - Failed to find key: " + key);
-//        return null;
-//    }
+
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
@@ -77,14 +65,14 @@ public class ListOfItems extends AppCompatActivity {
         }
 
         @Override
-        public ListOfItems.SimpleItemRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public ItemsInCategory.SimpleItemRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.content_list_of_items, parent, false);
-            return new ListOfItems.SimpleItemRecyclerViewAdapter.ViewHolder(view);
+            return new ItemsInCategory.SimpleItemRecyclerViewAdapter.ViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(final ListOfItems.SimpleItemRecyclerViewAdapter.ViewHolder holder, int position) {
+        public void onBindViewHolder(final ItemsInCategory.SimpleItemRecyclerViewAdapter.ViewHolder holder, int position) {
             holder.item = mValues.get(position);
             holder.mIdView.setText("" + mValues.get(position).getKey());
             holder.mContentView.setText(mValues.get(position).getShortDescription());
@@ -126,5 +114,4 @@ public class ListOfItems extends AppCompatActivity {
             }
         }
     }
-
 }
