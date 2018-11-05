@@ -14,6 +14,7 @@ import edu.gatech.micheyang.pbjdonationtracker.LocationEmployee;
 import edu.gatech.micheyang.pbjdonationtracker.MainActivity;
 import edu.gatech.micheyang.pbjdonationtracker.R;
 import edu.gatech.micheyang.pbjdonationtracker.database.DatabaseHelper;
+import edu.gatech.micheyang.pbjdonationtracker.db_model.User;
 
 
 public class UserLogin extends AppCompatActivity implements View.OnClickListener {
@@ -27,6 +28,8 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
     private Button buttonCancel;
     private TextView failedLogin;
 
+    private User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,7 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
 
     private void init() {
         dbhelper = new DatabaseHelper(activity);
+        user = new User();
 
         inputUsername = findViewById(R.id.enterLoginUsername);
         inputPassword = findViewById(R.id.enterLoginPassword);
@@ -67,9 +71,14 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
         String username = inputUsername.getText().toString().trim();
         String password = inputPassword.getText().toString().trim();
         if (dbhelper.checkUserPass(username, password)) {
+            for (User u : dbhelper.userList()) {
+                if (u.getUsername().equals(username)) user = u;
+            }
+
             if (dbhelper.getUserType(username) != null
                     && dbhelper.getUserType(username).equals("EMPLOYEE")) {
                 Intent intent = new Intent(getApplicationContext(), AppScreen.class);
+                intent.putExtra("thisUser", user);
                 startActivity(intent);
             } else if (dbhelper.getUserType(username) != null
                     && dbhelper.getUserType(username).equals("MANAGER")) {

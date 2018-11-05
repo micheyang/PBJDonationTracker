@@ -128,7 +128,6 @@ public class UserRegistration extends AppCompatActivity implements View.OnClickL
                 }
             }
         }
-        invalid_attempt.setVisibility(View.VISIBLE);
     }
 
     private boolean validate(String usernm, String eml) {

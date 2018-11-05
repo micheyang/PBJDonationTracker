@@ -17,18 +17,27 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
-import model.LocationList;
-import model.Location;
+import edu.gatech.micheyang.pbjdonationtracker.database.LocationDBHelper;
+import edu.gatech.micheyang.pbjdonationtracker.db_model.Location;
+import edu.gatech.micheyang.pbjdonationtracker.db_model.User;
+
 
 import static edu.gatech.micheyang.pbjdonationtracker.LoginActivity.userIndex;
 
 public class EmployeeAppScreen extends AppCompatActivity {
+
+    private final AppCompatActivity activity = EmployeeAppScreen.this;
 
     private Button locationListButton;
     private Button locationInventoryButton;
     private Button addDonationButton;
     private Button searchButton;
     private String locName;
+
+    private User user;
+    private Location loc;
+
+    private LocationDBHelper locDBhelper;
 
     /***
      * Method that creates the activity when it is launched.
@@ -41,10 +50,18 @@ public class EmployeeAppScreen extends AppCompatActivity {
         setContentView(R.layout.activity_employee_app_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        init();
         pressSearch();
         pressAddDonation();
         pressViewLocations();
         pressViewMyLocationInventory();
+    }
+
+    private void init() {
+        user = (User) getIntent().getSerializableExtra("thisUser");
+        locDBhelper = new LocationDBHelper(activity);
+        loc = locDBhelper.findByKey(user.getEmpId());
     }
 
     public void pressSearch() {
@@ -74,8 +91,8 @@ public class EmployeeAppScreen extends AppCompatActivity {
         locationListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                readCSVFile();
-                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.ListOfLocations");
+//                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.ListOfLocations");
+                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.activities.LocationList");
                 startActivity(intent);
             }
         });
@@ -83,7 +100,6 @@ public class EmployeeAppScreen extends AppCompatActivity {
 
     public void pressViewMyLocationInventory() {
         locationInventoryButton = (Button) findViewById(R.id.location_inventory_button);
-        readCSVFile();
         locationInventoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,35 +121,35 @@ public class EmployeeAppScreen extends AppCompatActivity {
     public static final int PHONE_NUMBER_POSITION = 9;
     public static final int WEBSITE_POSITION = 10;
 
-    private void readCSVFile() {
-        LocationList model = LocationList.INSTANCE;
-
-        try {
-            //Open a stream on the raw file
-            InputStream is = getResources().openRawResource(R.raw.locationdata);
-            //From here we probably should call a model method and pass the InputStream
-            //Wrap it in a BufferedReader so that we get the readLine() method
-            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
-
-            String line;
-            br.readLine(); //get rid of header line
-            while ((line = br.readLine()) != null) {
-                //Log.d(MainActivity.TAG, line);
-                String[] details = line.split(",");
-                int key = Integer.parseInt(details[0]);
-                model.addLocation(new Location(key, details[NAME_POSITION], details[LATITUDE_POSITION],
-                        details[LONGITUDE_POSITION], details[STREET_ADDRESS_POSITION], details[CITY_POSITION],
-                        details[STATE_POSITION], details[ZIP_CODE_POSITION], details[TYPE_POSITION],
-                        details[PHONE_NUMBER_POSITION], details[WEBSITE_POSITION]));
-            }
-            br.close();
-            locName = model.findLocationByKey(UserDatabase.location.get(userIndex)).getName();
-            Log.d("EmpAppScreen", "locName: " + locName);
-
-        } catch (IOException e) {
-            //Log.e(MainActivity.TAG, "error reading assets", e);
-        }
-    }
+//    private void readCSVFile() {
+//        LocationList model = LocationList.INSTANCE;
+//
+//        try {
+//            //Open a stream on the raw file
+//            InputStream is = getResources().openRawResource(R.raw.locationdata);
+//            //From here we probably should call a model method and pass the InputStream
+//            //Wrap it in a BufferedReader so that we get the readLine() method
+//            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+//
+//            String line;
+//            br.readLine(); //get rid of header line
+//            while ((line = br.readLine()) != null) {
+//                //Log.d(MainActivity.TAG, line);
+//                String[] details = line.split(",");
+//                int key = Integer.parseInt(details[0]);
+//                model.addLocation(new Location(key, details[NAME_POSITION], details[LATITUDE_POSITION],
+//                        details[LONGITUDE_POSITION], details[STREET_ADDRESS_POSITION], details[CITY_POSITION],
+//                        details[STATE_POSITION], details[ZIP_CODE_POSITION], details[TYPE_POSITION],
+//                        details[PHONE_NUMBER_POSITION], details[WEBSITE_POSITION]));
+//            }
+//            br.close();
+//            locName = model.findLocationByKey(UserDatabase.location.get(userIndex)).getName();
+//            Log.d("EmpAppScreen", "locName: " + locName);
+//
+//        } catch (IOException e) {
+//            //Log.e(MainActivity.TAG, "error reading assets", e);
+//        }
+//    }
 
     /***
      * The method called when user attempts to log out of application w/ "Logout".

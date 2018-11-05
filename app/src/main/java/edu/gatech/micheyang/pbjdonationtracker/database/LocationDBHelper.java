@@ -168,6 +168,16 @@ public class LocationDBHelper extends SQLiteOpenHelper {
         return locn_list.isEmpty();
     }
 
+    public Location findByKey(int i) {
+        if (i == -1) return null;
+        for (Location loc : locationList()) {
+            if (loc.getKey() == i) {
+                return loc;
+            }
+        }
+        return null;
+    }
+
 
     public List<Location> locationList() {
         SQLiteDatabase db = this.getReadableDatabase();
